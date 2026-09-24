@@ -4,7 +4,7 @@ Thanks for helping. whole-team is small on purpose, and I merge changes that kee
 
 ## Ground rules
 
-- **Behaviour changes need an eval.** Add or update a case in `tools/gen_evals.py`, run `python3 tools/gen_evals.py`, show it fails before your change and passes after, and note the run in `evals/RESULTS.md`.
+- **Behaviour changes need an eval.** Add or update a case in `tools/gen_evals.py`, run `python3 tools/gen_evals.py`, show it fails before your change and passes after, and note the run in the results table in `evals/README.md`.
 - **Keep `SKILL.md` short.** It is loaded whenever the skill triggers. Detail goes in a `reference/` file that `SKILL.md` links to itself (one level deep).
 - **No tool-specific assumptions in the skill text.** Say "the platform's question tool" rather than naming one agent's tool, unless the text sits in a section marked as Claude Code only.
 - **The script stays standard library only** and keeps its tests green.
@@ -34,3 +34,5 @@ claude plugin validate .        # if you have Claude Code
 ```
 
 Bump the version in both `plugins/whole-team/.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` and add a `CHANGELOG.md` entry when the change is user-visible.
+
+Be kind, give feedback on the work and not the person, and help newcomers. This project follows the [Contributor Covenant 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/); report problems to the maintainer through [GitHub](https://github.com/SuhaasNv).

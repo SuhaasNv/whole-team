@@ -142,7 +142,7 @@ Then `/mcp` to sign in. Codex, Cursor, VS Code and Gemini setups are in the [boa
 
 <img src="assets/metrics.png" alt="Eval results on Claude Opus 5.5: 94% average score with whole-team vs 76% for the same agent without it, across 15 scenarios, 2 runs each." width="100%">
 
-Same agent, same prompts, with and without the skill: **94% vs 76% on Claude Opus 5.5** and **84% vs 57% on Claude Sonnet 5**, across 15 scenarios scored by `claude plugin eval`. Runs, setup and the cases it still misses are in [evals/RESULTS.md](evals/RESULTS.md).
+Same agent, same prompts, with and without the skill: **94% vs 76% on Claude Opus 5.5** and **84% vs 57% on Claude Sonnet 5**, across 15 scenarios scored by `claude plugin eval`. Runs, setup and the cases it still misses are in [evals/README.md](evals/README.md#results).
 
 ## Safe by design
 

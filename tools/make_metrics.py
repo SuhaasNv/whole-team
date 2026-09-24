@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Turn a `claude plugin eval --json` result into assets/metrics.html (render it with
-tools/render_assets.py) and print the summary numbers for README.md and evals/RESULTS.md.
+tools/render_assets.py) and print the summary numbers for README.md and evals/README.md.
 
     python3 tools/make_metrics.py path/to/result.json
 """
