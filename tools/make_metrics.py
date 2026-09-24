@@ -92,19 +92,19 @@ def chart(summary: dict, model: str) -> str:
     background:radial-gradient(circle at 1px 1px,#1a1e27 1px,transparent 0) 0 0/26px 26px,var(--bg); padding:44px 64px; }}
   h1 {{ font-size:30px; font-weight:700; }} h1 span {{ color:var(--accent); }}
   .meta {{ color:var(--muted); font-size:16px; margin-top:6px; }}
-  .stats {{ display:flex; gap:16px; margin-top:26px; }}
+  .stats {{ display:flex; gap:16px; margin-top:22px; }}
   .stat {{ background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:14px 20px; min-width:230px; }}
   .stat b {{ font-size:32px; font-weight:700; display:block; }} .stat b.acc {{ color:var(--accent); }}
   .stat span {{ color:var(--muted); font-size:14.5px; }}
-  .legend {{ display:flex; gap:22px; margin-top:26px; color:var(--muted); font-size:15px; align-items:center; }}
+  .legend {{ display:flex; gap:22px; margin-top:20px; color:var(--muted); font-size:15px; align-items:center; }}
   .sw {{ display:inline-block; width:14px; height:14px; border-radius:3px; margin-right:8px; vertical-align:-2px; }}
-  .rows {{ margin-top:14px; display:grid; gap:9px; }}
+  .rows {{ margin-top:8px; display:grid; gap:5px; }}
   .row {{ display:grid; grid-template-columns:330px 560px 1fr; align-items:center; gap:18px; }}
   .label {{ font-size:17px; }}
-  .bars {{ display:grid; gap:4px; }}
-  .bar {{ height:11px; border-radius:3px; }} .bar.with {{ background:var(--accent); }} .bar.without {{ background:var(--grey); }}
+  .bars {{ display:grid; gap:3px; }}
+  .bar {{ height:10px; border-radius:3px; }} .bar.with {{ background:var(--accent); }} .bar.without {{ background:var(--grey); }}
   .nums {{ font-family:"SF Mono",Menlo,monospace; font-size:15px; display:flex; gap:18px; color:var(--muted); }}
-  .nums .w {{ color:var(--text); width:52px; }} .nums .o {{ width:64px; }} .head {{ margin-top:18px; }} .head .nums, .head .nums .w {{ color:var(--dim); font-size:13px; }}
+  .nums .w {{ color:var(--text); width:52px; }} .nums .o {{ width:64px; }} .head {{ margin-top:12px; }} .head .nums, .head .nums .w {{ color:var(--dim); font-size:13px; }}
   .d.up {{ color:var(--green); }} .d.down {{ color:var(--red); }} .d.flat {{ color:var(--dim); }}
 </style></head><body>
   <h1>With whole-team vs <span>without</span></h1>
@@ -112,7 +112,7 @@ def chart(summary: dict, model: str) -> str:
   <div class="stats">
     <div class="stat"><b class="acc">{summary["mean_with"] * 100:.0f}%</b><span>average score with the skill</span></div>
     <div class="stat"><b>{summary["mean_without"] * 100:.0f}%</b><span>same agent, no skill</span></div>
-    <div class="stat"><b>{(summary["mean_with"] - summary["mean_without"]) * 100:+.0f} pts</b><span>difference</span></div>
+    <div class="stat"><b>{round(summary["mean_with"] * 100) - round(summary["mean_without"] * 100):+d} pts</b><span>difference</span></div>
     <div class="stat"><b>{fired}/{total}</b><span>runs where the skill fired</span></div>
   </div>
   <div class="legend"><div><span class="sw" style="background:var(--accent)"></span>with whole-team</div><div><span class="sw" style="background:var(--grey)"></span>without</div><div>score = graders passed, weighted</div></div>
@@ -138,7 +138,7 @@ def main() -> int:
     print(json.dumps({
         "mean_with": round(summary["mean_with"], 3),
         "mean_without": round(summary["mean_without"], 3),
-        "delta_pts": round((summary["mean_with"] - summary["mean_without"]) * 100),
+        "delta_pts": round(summary["mean_with"] * 100) - round(summary["mean_without"] * 100),
         "fired": f"{fired}/{total}",
         "cost_usd": round(summary["cost"], 2),
         "rows": [(r["name"], round(r["with"], 2), round(r["without"], 2)) for r in summary["rows"]],
