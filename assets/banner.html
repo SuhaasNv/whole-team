@@ -1,57 +1,101 @@
 <!doctype html>
-<!-- Source for banner.png and social-preview.png. Render: python3 tools/render_assets.py -->
+<!-- Source for banner.png (README) and social-preview.png (GitHub). Render: python3 tools/render_assets.py -->
 <html>
 <head>
 <meta charset="utf-8">
 <style>
   :root {
-    --bg: #0f1115;
-    --panel: #171a21;
-    --line: #262b36;
+    --bg: #0d0f13;
+    --panel: #151820;
+    --panel-2: #1b1f29;
+    --line: #272c38;
     --text: #f3f4f6;
     --muted: #9aa3b2;
+    --dim: #6b7383;
     --accent: #e8744f;
+    --green: #5fbf85;
+    --amber: #e3b35a;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { width: 1280px; height: 640px; background: var(--bg); }
+  html, body { width: 1280px; height: 640px; overflow: hidden; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Inter, Helvetica, Arial, sans-serif;
     color: var(--text);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 96px;
     background:
-      radial-gradient(circle at 1px 1px, #1d212a 1px, transparent 0) 0 0 / 28px 28px,
+      radial-gradient(circle at 1px 1px, #1a1e27 1px, transparent 0) 0 0 / 26px 26px,
       var(--bg);
+    display: grid;
+    grid-template-columns: 560px 1fr;
+    gap: 48px;
+    align-items: center;
+    padding: 0 64px 0 76px;
   }
-  .mark { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 22px; letter-spacing: 0.02em; }
-  .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); }
-  h1 { font-size: 112px; font-weight: 750; letter-spacing: -0.035em; margin-top: 18px; line-height: 1; }
-  .tagline { font-size: 40px; font-weight: 600; margin-top: 22px; }
+  .mark { display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: 19px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  h1 { font-size: 92px; font-weight: 760; letter-spacing: -0.04em; line-height: 1; margin-top: 16px; }
+  .tagline { font-size: 36px; font-weight: 650; margin-top: 16px; letter-spacing: -0.01em; }
   .tagline span { color: var(--accent); }
-  .sub { font-size: 25px; color: var(--muted); margin-top: 14px; max-width: 980px; line-height: 1.4; }
-  .hats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 38px; }
-  .hat {
-    font-size: 18px; color: var(--text); padding: 7px 14px; border-radius: 999px;
-    border: 1px solid var(--line); background: var(--panel);
+  .sub { font-size: 21px; color: var(--muted); margin-top: 14px; line-height: 1.45; }
+  ul { list-style: none; margin-top: 26px; display: grid; gap: 11px; }
+  li { font-size: 20px; display: flex; align-items: center; gap: 12px; }
+  li::before { content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--accent); flex: none; }
+  .install { margin-top: 30px; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 17px; color: var(--dim); }
+  .install b { color: var(--text); font-weight: 500; }
+
+  .term {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+    overflow: hidden;
   }
-  .cmd {
-    margin-top: 34px; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 21px; color: var(--muted);
+  .bar { display: flex; align-items: center; gap: 8px; padding: 13px 16px; background: var(--panel-2); border-bottom: 1px solid var(--line); }
+  .bar i { width: 11px; height: 11px; border-radius: 50%; background: #3a404d; display: block; }
+  .bar span { margin-left: 10px; font-size: 13px; color: var(--dim); font-family: "SF Mono", Menlo, monospace; }
+  pre {
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 15.5px;
+    line-height: 1.62;
+    padding: 20px 22px 22px;
+    color: var(--muted);
+    white-space: pre-wrap;
   }
-  .cmd b { color: var(--text); font-weight: 500; }
+  .p { color: var(--accent); }
+  .c { color: var(--text); font-weight: 600; }
+  .k { color: var(--text); }
+  .ok { color: var(--green); }
+  .q { color: var(--amber); }
+  .gap { display: block; height: 12px; }
 </style>
 </head>
 <body>
-  <div class="mark"><div class="dot"></div>Agent skill · Claude Code plugin</div>
-  <h1>whole-team</h1>
-  <div class="tagline">One developer, <span>every hat.</span></div>
-  <div class="sub">Controlled, agile development for you and your AI agent: scope and pushback, use cases and stories, sprints, reviews and retros, and a gate on every push.</div>
-  <div class="hats">
-    <div class="hat">Product owner</div><div class="hat">Scrum master</div><div class="hat">Architect</div>
-    <div class="hat">Developer</div><div class="hat">QA</div><div class="hat">Security</div>
-    <div class="hat">DevOps</div><div class="hat">Tech writer</div><div class="hat">Reviewer</div>
+  <section>
+    <div class="mark"><div class="dot"></div>Claude Code plugin · Agent Skill</div>
+    <h1>whole-team</h1>
+    <div class="tagline">One developer, <span>every hat.</span></div>
+    <div class="sub">Controlled, agile development for you and your AI agent.</div>
+    <ul>
+      <li>Scopes the work and pushes back on overengineering</li>
+      <li>Use cases, stories, sprints, reviews and retros</li>
+      <li>Nothing is pushed without your yes</li>
+    </ul>
+    <div class="install">/plugin marketplace add <b>SuhaasNv/whole-team</b></div>
+  </section>
+
+  <div class="term">
+    <div class="bar"><i></i><i></i><i></i><span>clinic-app · sprint 1</span></div>
+<pre><span class="p">›</span> <span class="c">/whole-team:scope</span> 3 days, 5 features
+<span class="k">Recommendation:</span> booking + availability as one
+tested, deployed slice; defer queue and reports
+<span class="k">Why:</span> 24 h of work vs 15 h available
+<span class="q">Decision needed:</span> A) slice  B) all five, thin
+<span class="gap"></span><span class="p">›</span> <span class="c">/whole-team:story</span>
+<span class="ok">Done:</span> US-012 book a slot (48 tests passed)
+<span class="k">Next:</span> US-013 cancel a booking
+<span class="q">Decide:</span> push dev to origin?  <span class="k">[y/N]</span>
+<span class="gap"></span><span class="p">›</span> <span class="c">/whole-team:close-sprint</span>
+<span class="k">Sprint 1:</span> planned 5 · done 4 · slipped 1
+<span class="k">Retro action:</span> seed script before planning</pre>
   </div>
-  <div class="cmd">/plugin marketplace add <b>SuhaasNv/whole-team</b></div>
 </body>
 </html>
