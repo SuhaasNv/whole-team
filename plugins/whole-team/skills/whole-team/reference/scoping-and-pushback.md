@@ -14,7 +14,7 @@
 
 A brief, assessment, take-home task, client spec, RFP, a large feature request, or any "build X by <date>". Also any time mid-project when a new ask would push committed work out of the time box.
 
-The scope decision is the most valuable thing you produce in the first hour. A narrow build that is complete, tested and deployed beats a wide build that is half-working, and evaluators know this.
+Settle scope first: it is the most valuable output of the first hour. A narrow build that is complete, tested and deployed beats a wide, half-working one, and evaluators grade that way.
 
 ## Step 1: Read the brief like an assessor
 
@@ -33,11 +33,11 @@ Read it twice. Fill `docs/01-discovery/BRIEF_ANALYSIS.md` (run `wt.py init --bri
 ## Step 2: Do the capacity math
 
 1. **Time box in focused hours.** Calendar time × realistic focus. A "3-day" task alone is about 3 × 7 = 21 hours, not 72.
-2. **Reserve 30 percent** for setup, tests, docs, deployment, review and the unexpected. In an assessment these are graded, so they are not optional.
-3. **Size every candidate item** in hours (S = 1 to 2, M = 3 to 5, L = 6 to 10; anything bigger is split or cut). Include its tests and docs in the size.
+2. **Reserve 30 percent** for setup, tests, docs, deployment, review and the unexpected. An assessment grades these, so they stay in.
+3. **Size every candidate item** in hours (S = 1 to 2, M = 3 to 5, L = 6 to 10; split or cut anything bigger). Include its tests and docs in the size.
 4. **Compare.** If the MUST items exceed 70 percent of the time box, the scope is wrong. Cut before starting, not at midnight on the last day.
 
-Show the math to the user in a small table. Numbers make pushback a shared fact instead of an opinion.
+Show the math to the user in a small table, so they can check the numbers behind any pushback.
 
 ## Step 3: Choose the slice
 
@@ -49,7 +49,7 @@ Prefer depth over breadth. **The recommended slice must fit:** add up its sizes 
 Write `SCOPE.md`:
 - **Decision in one line.** "Build A and B as one tested, deployed slice; defer C."
 - **Why this scope.** Two or three sentences tying the choice to what is evaluated.
-- **MUST / SHOULD / COULD / DEFERRED / MOCKED**, each row linked to the brief (B-number). SHOULD rows name their simplification. DEFERRED and MOCKED rows say *what production would need*, so a deferral reads as judgement, not omission.
+- **MUST / SHOULD / COULD / DEFERRED / MOCKED**, each row linked to the brief (B-number). SHOULD rows name their simplification. DEFERRED and MOCKED rows say *what production would need*, so the deferral reads as a decision.
 - **Assumptions**, numbered (A1, A2, ...). Each is something you decided because the brief did not say.
 - **Cut order**: what goes first if time runs short, decided now while there is time to think.
 - **Decision log**: dated one-liners each time scope changes.
@@ -63,7 +63,7 @@ Push back when:
 - the ask trades away security, data integrity or tests,
 - the ask is overengineering for the current need ([right-sizing.md](right-sizing.md)).
 
-How to push back: one message, this shape, no lecture:
+Push back in one message with this shape, and no lecture:
 
 ```
 Recommendation: <what you suggest>
@@ -75,17 +75,17 @@ Decision needed: <the exact question, with options>
 
 Then:
 - If the owner agrees, update `SCOPE.md` and the decision log.
-- If the owner overrules, record their decision and the stated risk in the decision log, then commit fully to it. Do not relitigate.
+- If the owner overrules, record their decision and the stated risk in the decision log, then commit to it. Do not relitigate.
 - Never silently build less than asked, or more.
 
 ## Assessments and take-home tasks
 
 - The scope decision is itself graded. Make `SCOPE.md` short, confident and easy to find from the README.
 - If there is a channel to the assessor, draft up to five clarifying questions in the first hour for the user to send (never send them yourself). If not, turn each open question into a numbered assumption and move on.
-- Start with a walking skeleton (story 000): runnable app, database, health check, CI, deploy target. It de-risks everything else.
+- Start with a walking skeleton (story 000): runnable app, database, health check, CI, deploy target. It surfaces setup and deploy problems before any feature depends on them.
 - Deliver the core loop polished before touching extras. Evaluators open the main path first.
 - Keep `docs/10-reviews/TRACEABILITY.md` current: every brief item (B-number) maps to requirement, story, test and where it is shown, or to its DEFERRED row. Before submission, re-read the brief line by line against it.
-- `AI_USAGE.md`: what the AI did, what you checked, what you changed. Many briefs ask for it; honesty here is a strength.
+- `AI_USAGE.md`: what the AI did, what you checked, what you changed. Many briefs ask for it, and assessors credit an honest account.
 
 ## Beyond the brief
 

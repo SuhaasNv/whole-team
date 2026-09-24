@@ -13,11 +13,11 @@ body:
     id: proposal
     attributes:
       label: The change you propose
-      description: Keep whole-team small; say why this belongs in the skill rather than in your project's CLAUDE.md.
+      description: Why does this belong in the skill and not in your project's CLAUDE.md? whole-team stays small.
     validations:
       required: true
   - type: textarea
     id: eval
     attributes:
-      label: How we would test it
-      description: The eval case (prompt and what should pass) that fails today and would pass after the change.
+      label: How to test it
+      description: An eval case (prompt and what should pass) that fails today and passes after the change.

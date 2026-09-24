@@ -1,6 +1,6 @@
 # Design before code (stories with a screen)
 
-A screen is designed and approved before its code is written. Rework in a mockup costs minutes; rework in components costs hours.
+Design a screen and get it approved before writing its code. Rework in a mockup costs minutes; rework in components costs hours.
 
 ## Design tools: use what is installed, recommend what is missing
 
@@ -30,7 +30,7 @@ Rules:
 
 ## Design system (standard and strict)
 
-Tokens for colour, type scale, spacing and radius in one place (`DESIGN.md` and the code's theme file, kept identical). Components listed with their states. New components only when an existing one cannot be adapted.
+Keep tokens for colour, type scale, spacing and radius in one place (`DESIGN.md` and the code's theme file, kept identical). List components with their states. Add a new component only when no existing one can be adapted.
 
 ## Quality bar
 

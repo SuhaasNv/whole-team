@@ -12,7 +12,7 @@
 
 ## Personas
 
-List every distinct role with what they want, what they must never see or do, and what they are accountable for. Never collapse two roles into one to save time; permissions are where real bugs live. A system actor (a scheduled job, an AI model) is listed too, with what it may and may not change.
+List every distinct role with what they want, what they must never see or do, and what they are accountable for. Never collapse two roles into one to save time; permission bugs start there. List system actors (a scheduled job, an AI model) too, with what each may and may not change.
 
 ## Requirements
 
@@ -24,7 +24,7 @@ List every distinct role with what they want, what they must never see or do, an
 | NFR-001 | p95 API latency under 300 ms at 20 concurrent users | Assumption A2 | SHOULD |
 | SEC-001 | Operators can read only their own applications | Implied by roles | MUST |
 
-Prefixes: `FR` functional, `NFR` non-functional, `SEC` security, `UX` experience, `AI` model behaviour, `OPS` operations. Add others only if needed. IDs are never reused or renumbered; a removed requirement is marked `Dropped` with a reason.
+Prefixes: `FR` functional, `NFR` non-functional, `SEC` security, `UX` experience, `AI` model behaviour, `OPS` operations. Add others only if needed. Never reuse or renumber IDs; mark a removed requirement `Dropped` with a reason.
 
 ## Use cases (standard and strict)
 

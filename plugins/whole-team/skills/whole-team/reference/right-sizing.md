@@ -1,6 +1,6 @@
 # Right-sizing: do not overengineer
 
-Build for the requirements you have, with room to change, not for the ones you imagine. The goal is the smallest design that is correct, tested and easy to change later.
+Build for the requirements you have, not the ones you imagine. Aim for the smallest design that is correct, tested and easy to change later.
 
 ## Default shape
 
@@ -18,7 +18,7 @@ Layering inside the monolith: `api` → `services` → `domain` and `repositorie
 
 1. **Every new moving part needs a requirement ID.** A service, queue, cache, layer, framework, dependency or config option names the requirement (FR, NFR, SEC) that needs it. No ID, no part.
 2. **Rule of two.** No shared helper or abstraction until there are two real uses; no framework or plugin system until three.
-3. **Interfaces only at real seams:** external providers (payments, email, AI models), storage, the clock. Where you need a test double or expect a swap. Not around your own code "just in case".
+3. **Interfaces only at real seams:** external providers (payments, email, AI models), storage, the clock. Add one where you need a test double or expect a swap, never around your own code "just in case".
 4. **Measure before optimizing.** No caching, denormalizing or async rewrites without a measured problem and a target number.
 5. **Configuration only for values that differ between environments.** Everything else is code.
 6. **Delete over deprecate** in code you own and nobody else calls.
@@ -30,7 +30,7 @@ Scope creep also happens one diff at a time: a bug fix that also restyles the pa
 - Every file in the diff is explained by the story's acceptance criteria or its tests and docs.
 - No unrequested changes to copy, colours, layout, formatting, comments or dependencies.
 - No extra artifacts (reports, summaries, new docs) unless the story or the hats table asks for them.
-- Improvements you notice, and extras the user mentions in passing, become candidate stories, not part of this one. Say so in the reply.
+- Record improvements you notice, and extras the user mentions in passing, as candidate stories outside this one, and say so in the reply.
 
 ## Red-flag phrases
 
@@ -38,7 +38,7 @@ When you or the user says one of these, stop and ask for the requirement behind 
 
 ## Simple, never sloppy
 
-Right-sizing never cuts these. They are the difference between a small system and a broken one:
+Right-sizing never cuts these; without them a small system is a broken one:
 - Server-side authorization on every endpoint, tested with the wrong role and the wrong owner
 - Input validation at the boundary; one consistent error shape
 - Transactions around multi-step writes; audit records written in the same transaction when required

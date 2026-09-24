@@ -37,5 +37,5 @@ NOTES
 ## After the review
 
 - Fix every MUST FIX, re-run verification, and re-review if a fix was more than a few lines.
-- For each SHOULD FIX: fix it, or write one line on why not (it becomes a candidate story if it matters).
+- For each SHOULD FIX: fix it, or write one line on why not (add it as a candidate story if it matters).
 - Record the verdict in the story notes or the merge commit body.

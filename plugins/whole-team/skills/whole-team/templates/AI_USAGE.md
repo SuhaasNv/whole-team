@@ -1,6 +1,6 @@
 # AI usage
 
-How AI tools were used to build this, and how their output was checked.
+How I used AI tools to build this, and how I checked their output.
 
 ## Tools
 

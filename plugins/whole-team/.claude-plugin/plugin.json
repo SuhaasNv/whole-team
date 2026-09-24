@@ -1,7 +1,7 @@
 {
   "name": "whole-team",
   "displayName": "whole-team",
-  "description": "Claude Skill for controlled, agile development: one developer, every hat. Scoping and pushback, use cases and stories, sprints with reviews and retrospectives, board sync (GitHub Projects, Linear, Jira, Notion or local), a story loop with tests, docs and independent review, and release gates.",
+  "description": "Claude Skill: one developer, every hat. Your agent scopes the work and pushes back, writes use cases and stories, runs sprints with reviews and retros, keeps your board in sync (GitHub Projects, Linear, Jira, Notion or local), ships each story with tests, docs and an independent review, and asks before every release.",
   "version": "0.1.0",
   "author": {
     "name": "Suhaas Nv",

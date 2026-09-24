@@ -14,7 +14,7 @@ Classify: **greenfield** (empty or near-empty repo) or **brownfield** (working c
 
 ## 2. Ask one batch
 
-Only when the user wants to set up a project. A narrow task (write a story, split one, answer a question) is done first, with setup offered in one line at the end.
+Only when the user wants to set up a project. Do a narrow task (write a story, split one, answer a question) first and offer setup in one line at the end.
 
 Use the platform's question tool if it has one (multiple choice, recommendation first); otherwise a short numbered list. Skip any question the repo already answered and state what you inferred instead.
 
@@ -23,7 +23,7 @@ Use the platform's question tool if it has one (multiple choice, recommendation 
    - assessment, take-home, client handover, regulated domain: `strict` (or `standard` if the time box is under two days)
    - real users or a portfolio piece: `standard`
    - prototype, weekend, internal tool: `lite`
-3. **Where should stories and use cases live?** Offer: GitHub Projects, Linear, Jira, Notion, or a local markdown board. Recommend what the user or their team already uses; if nothing, GitHub Projects when the repo is on GitHub, else local. Say that the markdown file stays the portable record either way. Details and connection steps: [board-setup.md](board-setup.md).
+3. **Where should stories and use cases live?** Offer: GitHub Projects, Linear, Jira, Notion, or a local markdown board. Recommend what the user or their team already uses; if nothing, GitHub Projects when the repo is on GitHub, else local. Tell them the markdown file stays the portable record either way. Details and connection steps: [board-setup.md](board-setup.md).
 4. **Sprint length:** default one-day sprints for projects of a week or less, one-week sprints for longer ones (pass it as `--sprint-length "1 day"`, `"1 week"`, `"2 weeks"`).
 5. **Branching:** recommend `main` (releases) + `dev` (integration) + one branch per story, merged with `--no-ff`. Offer trunk-based (short branches straight into `main`) for lite projects. Brownfield: keep what the repo already does. Details: [branching.md](branching.md).
 6. **Viewports to verify (UI only):** default 390, 1024 and 1280 px.
@@ -41,7 +41,7 @@ This writes `.whole-team.json` and the profile's documents from templates (skipp
 
 - Connect the board: [board-setup.md](board-setup.md). Record its identifiers in `.whole-team.json` under `board`.
 - Run `wt.py agreement` and append its output to the project's `CLAUDE.md` (Claude Code) or `AGENTS.md` (other agents). Show the user the block; it is their project's rulebook.
-- Commit the scaffolding: `chore: set up whole-team`. In a new repository this first commit goes on `main`, because nothing else exists yet; it is the one allowed direct commit to `main`. Then, if the owner chose `main` + `dev`, create `dev` from it: `git switch -c dev`. In an existing repository, commit on a `chore/whole-team-setup` branch from the integration branch instead.
+- Commit the scaffolding: `chore: set up whole-team`. In a new repository this first commit goes on `main` because no other branch exists yet; it is the one allowed direct commit to `main`. Then, if the owner chose `main` + `dev`, create `dev` from it: `git switch -c dev`. In an existing repository, commit on a `chore/whole-team-setup` branch from the integration branch instead.
 
 ## 4. Hand off
 

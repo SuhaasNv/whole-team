@@ -38,9 +38,9 @@ Write a short plan: files you expect to touch, tests you will add, risks (migrat
 
 ## 4. Build
 
-- **Tests first where they pay:** domain rules, state transitions, authorization, parsing, and every bug (reproduce it in a failing test first). For UI wiring and glue, writing the test right after is fine.
+- **Tests first where they pay:** domain rules, state transitions, authorization, parsing, and every bug (reproduce it in a failing test first). For UI wiring and glue, you may write the test right after.
 - Make the smallest change that satisfies the acceptance criteria.
-- **Stay inside the story.** Do not change copy, colours, styling, formatting, comments, dependencies or files the acceptance criteria do not need, and do not create extra documents or reports. Anything you notice goes under `## Backlog: candidates` in `USER_STORIES.md`. The same goes for extra changes the user mentions in passing ("while you're in there, the footer looks dated"): do not make them in this story; add them as a candidate and say so in your reply, offering to make it the next story. Before committing, read `git diff --stat`: every file in it must be explainable by the story.
+- **Stay inside the story.** Do not change copy, colours, styling, formatting, comments, dependencies or files the acceptance criteria do not need, and do not create extra documents or reports. Put anything you notice under `## Backlog: candidates` in `USER_STORIES.md`. Treat extra changes the user mentions in passing ("while you're in there, the footer looks dated") the same way: leave them out of this story, add them as a candidate, say so in your reply and offer to make it the next story. Before committing, read `git diff --stat`: the story must explain every file in it.
 - Match the surrounding code's naming, structure and comment density.
 - Commit in small conventional commits as you go (`feat:`, `fix:`, `test:`, `docs:`, `chore:`, `refactor:`), subject under about 50 characters, body only for the why.
 

@@ -1,6 +1,6 @@
 # Checkpoints and explanations
 
-The owner steers; you build. At each checkpoint you stop, explain what you understood and what you plan, and ask. You never guess on a product decision, and you never start coding a story the owner has not seen the plan for.
+At each checkpoint, stop, explain what you understood and what you plan, and ask. Never guess a product decision, and never start coding a story whose plan the owner has not seen.
 
 ## Contents
 - Checkpoint levels
@@ -17,7 +17,7 @@ Set in `.whole-team.json` as `"checkpoints"` (`wt.py init --checkpoints <level>`
 |-------|------------------|-----|
 | `every-step` | At every row of the checkpoint map below | Owners who want to steer each move, new projects, assessments |
 | `phase` | At phase boundaries only: scope, stories, architecture, sprint plan, sprint review, release | Owners who trust the story loop once a sprint is agreed |
-| `gates` | Only at the gates in rule 6 (scope, sprint plan, designs, owner-reviewed merges, anything that leaves the machine) | Experienced owners on familiar work |
+| `gates` | Only at the gates in rule 7 (scope, sprint plan, designs, owner-reviewed merges, anything that leaves the machine) | Experienced owners on familiar work |
 
 The owner can change the level at any time ("stop asking me about every story" means `phase`). Gates apply at every level.
 
@@ -55,7 +55,7 @@ Skip the block for trivial moves inside an approved plan (renaming a variable th
 | Retrospective | The draft entry | Anything to add? Which actions to commit to |
 | Release | Release lint, notes, UAT results, risks | Push, tag, deploy? |
 
-A narrow task (write a story, split one, answer a question) is done first and ends with its checkpoint question (for example "Save this story to USER_STORIES.md?"), instead of opening with questions.
+Do a narrow task (write a story, split one, answer a question) first and end with its checkpoint question (for example "Save this story to USER_STORIES.md?") instead of opening with questions.
 
 ## Asking good questions
 
@@ -67,7 +67,7 @@ A narrow task (write a story, split one, answer a question) is done first and en
 
 ## Writing decisions down
 
-Explanations in chat disappear; decisions must not. Record each answer where the next session will find it:
+Chat does not carry over to the next session. Record each answer where the next session will find it:
 
 | Decision | Where |
 |----------|-------|
@@ -77,4 +77,4 @@ Explanations in chat disappear; decisions must not. Record each answer where the
 | Sprint plan and changes | `SPRINTS.md` |
 | Process changes | `RETROSPECTIVES.md` actions |
 
-A decision the owner made in chat is recorded in the same turn, with the date and "decided by owner".
+Record a decision the owner made in chat in the same turn, with the date and "decided by owner".

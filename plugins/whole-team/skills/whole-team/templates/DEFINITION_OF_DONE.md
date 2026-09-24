@@ -12,10 +12,10 @@ A story enters a sprint only when:
 
 # Definition of Done
 
-A story is Done only when every applicable item is true. "Works on my machine" is the start, not the end. Tailor this list to the project at intake, then treat it as a contract.
+A story is Done only when every applicable item is true. Tailor this list to the project at intake, then treat it as a contract.
 
 ## Functional
-- [ ] Every acceptance criterion is demonstrably met, each by a named test or a recorded manual check.
+- [ ] Every acceptance criterion is met, each shown by a named test or a recorded manual check.
 - [ ] The diff contains only what the story needs (no unrelated copy, styling, formatting or files).
 - [ ] The critical journey still works end to end.
 

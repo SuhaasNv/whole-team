@@ -2,7 +2,7 @@
 description: "What whole-team does and which command to use when"
 ---
 
-Load the whole-team skill (it holds the rules, the reference files and the wt.py script). Show this cheat sheet, then run `wt.py status` if the project has a .whole-team.json and suggest the single most useful next command.
+Load the whole-team skill. Show this cheat sheet, then run `wt.py status` if the project has a .whole-team.json and suggest the single most useful next command.
 
 | Command | When |
 |---------|------|

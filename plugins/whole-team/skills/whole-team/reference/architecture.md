@@ -22,11 +22,11 @@ If an entity has a status, all transitions go through one module: a table of (fr
 
 ## Architecture Decision Records
 
-`docs/03-architecture/decisions/ADR-NNNN-<slug>.md` (template provided). Write one when choosing between real alternatives with a lasting cost: framework, database, auth approach, hosting, sync vs async, a provider interface. Not for choices nobody would question. Status: Proposed, Accepted, Superseded by ADR-NNNN. Never edit an accepted ADR's decision; supersede it.
+`docs/03-architecture/decisions/ADR-NNNN-<slug>.md` (template provided). Write one when choosing between real alternatives with a lasting cost: framework, database, auth approach, hosting, sync vs async, a provider interface. Skip choices nobody would question. Status: Proposed, Accepted, Superseded by ADR-NNNN. Never edit an accepted ADR's decision; supersede it.
 
 ## Threat model (standard and strict)
 
-`docs/06-security/THREAT_MODEL.md` (template provided). For each trust boundary (browser to API, API to database, API to third parties, file uploads, admin surfaces), walk STRIDE briefly: spoofing, tampering, repudiation, information disclosure, denial of service, elevation of privilege. Each threat gets a control and the test that proves it. Usual minimum:
+`docs/06-security/THREAT_MODEL.md` (template provided). For each trust boundary (browser to API, API to database, API to third parties, file uploads, admin surfaces), walk STRIDE briefly: spoofing, tampering, repudiation, information disclosure, denial of service, elevation of privilege. Give each threat a control and the test that proves it. Usual minimum:
 - Authentication with sane session or token lifetime; rate limit on login
 - Server-side authorization per endpoint, tested with the wrong role and the wrong owner
 - Input validation; parameterized queries

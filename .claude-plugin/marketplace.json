@@ -5,13 +5,13 @@
     "url": "https://github.com/SuhaasNv"
   },
   "metadata": {
-    "description": "Agile delivery skills for one developer and their AI agent."
+    "description": "An agile process for one developer and their AI agent."
   },
   "plugins": [
     {
       "name": "whole-team",
       "source": "./plugins/whole-team",
-      "description": "Claude Skill: one developer, every hat. Scope and push back, plan use cases and stories, run sprints with reviews and retros, deliver with tests, docs and review, release with gates.",
+      "description": "Claude Skill: one developer, every hat. Your agent scopes the work and pushes back, writes use cases and stories, runs sprints with reviews and retros, ships each story with tests, docs and a review, and asks before every release.",
       "version": "0.1.0",
       "author": {
         "name": "Suhaas Nv"

@@ -1,6 +1,6 @@
 # Walkthrough: a take-home assessment, scoped and pushed back
 
-A worked example of what whole-team produces in the first hour of a take-home task. The brief, names and numbers are invented for illustration.
+What whole-team produces in the first hour of a take-home task. I made up the brief, names and numbers.
 
 ## The brief (excerpt)
 
@@ -22,7 +22,7 @@ A worked example of what whole-team produces in the first hour of a take-home ta
 | B4 | SMS reminders 24 h before | 4 |
 | B5 | Admin reports | 5 |
 
-**What is evaluated:** judgement, code quality, testing, production readiness. Feature count is not listed.
+**What is evaluated:** judgement, code quality, testing, production readiness. Feature count isn't on the list.
 
 **Implied:** four roles need authentication and server-side authorization; bookings need conflict rules (no double booking); times need a time-zone decision; SMS needs a provider and a way to test without sending.
 
@@ -72,7 +72,7 @@ Alternative: all five at demo quality: no end-to-end tests, no deployment, thin 
 Decision needed: A) B1 + B2 + B4 (recommended)  B) all five, reduced quality  C) something else
 ```
 
-The owner answers A. The decision goes into `SCOPE.md`.
+The owner picks A, and the agent records it in `SCOPE.md`.
 
 ## 4. SCOPE.md (abridged)
 
@@ -100,7 +100,7 @@ The owner answers A. The decision goes into `SCOPE.md`.
 
 ## 5. Right-sizing in the architecture step
 
-The first draft proposed a separate notification service and a Redis queue for reminders. The right-sizing checklist asked for a requirement that names the need; there was none at one clinic's volume. Result: one FastAPI app, Postgres, a scheduled job inside the app that runs every five minutes. The `SmsSender` interface stays, because it is a real seam (a provider, and a mock in tests).
+The agent's first draft had a separate notification service and a Redis queue for reminders. The right-sizing checklist asks for a requirement that names the need, and at one clinic's volume there isn't one. The agent cut it to one FastAPI app, Postgres, and a scheduled job inside the app that runs every five minutes. The `SmsSender` interface stays because it's a real seam: a provider in production, a mock in tests.
 
 ## 6. Sprint 1 stories
 
@@ -122,4 +122,4 @@ The first draft proposed a separate notification service and a Redis queue for r
 - Tests: 
 ```
 
-From here the story loop takes over: branch, tests first for the conflict rule, the smallest implementation, the hats pass, an independent review, a local merge, and a one-line status.
+After this the agent runs the story loop: branch, conflict-rule tests first, the smallest implementation, the hats pass, an independent review, a local merge, and a one-line status.

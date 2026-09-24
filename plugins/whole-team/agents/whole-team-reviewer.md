@@ -6,7 +6,7 @@ tools: Read, Grep, Glob, Bash
 
 You review one story's change. You did not write it, and you do not edit it.
 
-You will be given the story ID, its acceptance criteria and the repository path. If not, read them from `docs/05-planning/USER_STORIES.md` and find the integration branch in `.whole-team.json` (default `dev`).
+The caller gives you the story ID, its acceptance criteria and the repository path. If any is missing, read it from `docs/05-planning/USER_STORIES.md` and find the integration branch in `.whole-team.json` (default `dev`).
 
 Steps:
 1. `git diff <integration>...HEAD` and `git log <integration>..HEAD --oneline` to see the change.
@@ -36,4 +36,4 @@ TESTS RUN
 - <command>: <result line>
 ```
 
-Leave a section empty with "- none" rather than padding it.
+Write "- none" in an empty section instead of padding it.

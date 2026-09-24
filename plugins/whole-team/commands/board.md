@@ -3,6 +3,6 @@ description: "Choose or connect a board (GitHub Projects, Linear, Jira, Notion o
 argument-hint: "[github | linear | jira | notion | local]"
 ---
 
-Load the whole-team skill (it holds the rules, the reference files and the wt.py script), then follow reference/board-setup.md. If no board is chosen yet, recommend one with a one-line reason and ask. To connect, show the exact command and let the owner run it or approve it; never handle tokens. Once connected, record the identifiers in .whole-team.json and sync: every story in docs/05-planning/USER_STORIES.md exists on the board with the same ID, title, status, priority and sprint. Report what was created or changed.
+Load the whole-team skill, then follow reference/board-setup.md. If no board is chosen yet, recommend one with a one-line reason and ask. To connect, show the exact command and let the owner run it or approve it; never handle tokens. Once connected, record the identifiers in .whole-team.json and sync: every story in docs/05-planning/USER_STORIES.md exists on the board with the same ID, title, status, priority and sprint. Report what you created or changed.
 
 Board: $ARGUMENTS

@@ -12,7 +12,7 @@
 - Sprint close
 - When the sprint is failing
 
-Each ceremony is short. Its job is control, not paperwork: the owner always knows the goal, what is in the sprint, what changed and why.
+Keep each ceremony short. Each one exists so the owner knows the goal, what is in the sprint, what changed and why.
 
 ## Cadence
 
@@ -64,16 +64,16 @@ A story is ready (Definition of Ready) when:
 - screens: the design is approved, or approving it is the story's first task;
 - open questions are answered, or recorded as assumptions.
 
-A story that is not ready is not pulled into a sprint.
+Do not pull a story that is not ready into a sprint.
 
 ## Change control during a sprint
 
-A new request mid-sprint (a feature, a "quick change", an idea) is not added silently:
+Never add a new request mid-sprint (a feature, a "quick change", an idea) silently:
 1. Write it as a story (or a bug) and size it.
 2. Tell the owner the trade: "Adding US-031 (3 h) means dropping US-027 (3 h) from this sprint, or taking US-031 next sprint."
 3. On a yes, update the sprint plan, the board and the `SCOPE.md` decision log.
 
-Exceptions: a bug that breaks the critical journey is fixed now; a security issue is raised immediately.
+Exceptions: fix a bug that breaks the critical journey now; raise a security issue immediately.
 
 ## Mid-sprint check
 
@@ -83,8 +83,8 @@ Halfway through: is the goal still reachable? If not, propose the cut from the c
 
 1. Run `wt.py sprint N` for planned, shipped and not done.
 2. Demonstrate the sprint goal end to end: locally in early sprints, on the deployed environment once it exists. Walk the exit criteria.
-3. For each story marked Done, the owner accepts or rejects it. A rejected story goes back to In progress with the reason.
-4. Note feedback as new or changed stories for refinement; nothing is built during the review.
+3. For each story marked Done, the owner accepts or rejects it. Move a rejected story back to In progress with the reason.
+4. Note feedback as new or changed stories for refinement; build nothing during the review.
 
 ## Retrospective
 
@@ -139,4 +139,4 @@ Retro: docs/05-planning/RETROSPECTIVES.md#sprint-2-retro (action: seed script be
 
 ## When the sprint is failing
 
-At the mid-sprint check or earlier: propose the cut from the cut order to the owner with the capacity numbers, get a yes, update `SCOPE.md`, the sprint plan and the board, and continue. A smaller goal met is better than a larger goal missed.
+At the mid-sprint check or earlier: propose the cut from the cut order to the owner with the capacity numbers, get a yes, update `SCOPE.md`, the sprint plan and the board, and continue. Meet a smaller goal rather than miss a larger one.

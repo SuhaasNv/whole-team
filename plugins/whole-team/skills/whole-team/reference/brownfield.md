@@ -1,6 +1,6 @@
 # Adopting an existing codebase
 
-Goal: bring an existing repo under the method without breaking it or rewriting it. The code is the source of truth; the docs are written from it.
+Goal: bring an existing repo under the method without breaking it or rewriting it. The code is the source of truth; write the docs from it.
 
 ## 1. Survey (read-only)
 
@@ -16,8 +16,8 @@ Do not reformat, upgrade, or refactor anything during adoption.
 
 - `docs/03-architecture/ARCHITECTURE.md` from the code: stack, modules, API table (with roles as enforced today), data model, configuration. Mark anything uncertain as `Unverified:` rather than guessing.
 - `SCOPE.md`: what the product does today (as the baseline), what the owner wants next, what is out of scope.
-- `USER_STORIES.md`: existing features as Done stories only if useful for traceability; otherwise start the file with the next planned work. Open issues become candidate stories.
-- `DEFINITION_OF_DONE.md`: start from what CI and the codebase already enforce; list the gap to the target as **DoD debt** (for example "no integration tests for the billing module"). Each debt item becomes a story or is accepted with a reason.
+- `USER_STORIES.md`: existing features as Done stories only if useful for traceability; otherwise start the file with the next planned work. Turn open issues into candidate stories.
+- `DEFINITION_OF_DONE.md`: start from what CI and the codebase already enforce; list the gap to the target as **DoD debt** (for example "no integration tests for the billing module"). Turn each debt item into a story or accept it with a reason.
 
 ## 3. Match conventions
 
@@ -25,7 +25,7 @@ Keep the project's existing branch names, commit style, formatting and folder la
 
 ## 4. Report drift
 
-List every place where docs, comments or config disagree with the code, and every risk found (missing authorization checks, secrets in the repo, failing tests, unpinned dependencies). Present it to the owner as candidate stories with priorities; fix nothing without a yes. Secrets in the repo are raised immediately.
+List every place where docs, comments or config disagree with the code, and every risk found (missing authorization checks, secrets in the repo, failing tests, unpinned dependencies). Present it to the owner as candidate stories with priorities; fix nothing without a yes. Raise secrets in the repo immediately.
 
 ## 5. Continue
 

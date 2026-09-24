@@ -36,7 +36,7 @@ Record the choice in `.whole-team.json` (`branches.integration` is `dev` for A, 
 | `release/*` | `dev` | `main`, then back into `dev` | Optional stabilisation before a release (model A) | Days |
 | `hotfix/*` | `main` | `main`, then `dev` | A bug in the released version | Hours |
 
-One branch does one thing. A story that needs a tooling change first gets a `chore/*` branch merged before it, not a mixed branch.
+One branch does one thing. If a story needs a tooling change first, put that change on a `chore/*` branch and merge it before the story branch.
 
 ## Naming
 
@@ -66,7 +66,7 @@ feat/us-011          ●─●
 hotfix/x                              (from main → main, then → dev)
 ```
 
-- `main` receives only releases (a pull request from `dev`) and hotfixes. Never commit to it directly, with one exception: the very first commit of a new repository (the setup scaffolding), from which `dev` is then created.
+- `main` receives only releases (a pull request from `dev`) and hotfixes. Never commit to it directly, with one exception: the first commit of a new repository (the setup scaffolding), from which `dev` is then created.
 - `dev` is always buildable with CI green. It is what the development environment runs and what reviewers read between releases, so it only receives whole stories.
 - Story branches start from an up-to-date `dev` and merge back when the story meets its Definition of Done.
 
@@ -135,7 +135,7 @@ Conventional commits:
 | `chore` | Tooling, dependencies, CI, config |
 
 - Reference the story in the merge commit (`(US-012)`) and the issue number if the board is GitHub (`(#34)`).
-- Small commits while working; each one builds.
+- Commit in small steps while working; each commit builds.
 - Follow the project's rules on attribution trailers; if the owner has none, add none.
 
 ## Recovering from mistakes
@@ -147,4 +147,4 @@ Conventional commits:
 | Merged a story that was not Done, already pushed | `git revert -m 1 <merge-commit>`, then push with the owner's yes |
 | Secret committed | Stop. Tell the owner immediately; rotate the secret first, then clean history only with their yes |
 
-Every destructive command (`reset --hard`, `branch -D`, `push --force`) is shown to the owner before it runs.
+Show every destructive command (`reset --hard`, `branch -D`, `push --force`) to the owner before it runs.
