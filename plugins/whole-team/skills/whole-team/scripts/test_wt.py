@@ -229,6 +229,26 @@ class ProjectTests(unittest.TestCase):
         self.assertIn("Retro actions open: 1", out)
         self.assertIn("Sprint 1: 1/1 stories done", out)
 
+    def test_sprint_matches_padded_and_float_numbers(self) -> None:
+        run(["init", "--profile", "lite"])
+        self.write(wt.STORIES_PATH, STORIES.replace("Sprint: 1 · Status: Done", "Sprint: 01 · Status: Done"))
+        config = json.loads((self.root / ".whole-team.json").read_text())
+        config["sprint"]["current"] = 1.0
+        (self.root / ".whole-team.json").write_text(json.dumps(config))
+        code, out = run(["sprint"])
+        self.assertEqual(code, 0)
+        self.assertIn("planned 2 · done 1", out)
+        code, out = run(["status"])
+        self.assertIn("1/2 stories done", out)
+
+    def test_lint_catches_dependency_cycle(self) -> None:
+        run(["init", "--profile", "lite"])
+        self.write(wt.STORIES_PATH, STORIES.replace("Depends on: US-000", "Depends on: US-002"))
+        code, out = run(["lint"])
+        self.assertEqual(code, 1)
+        self.assertIn("dependency cycle US-001 -> US-002 -> US-001", out)
+        self.assertEqual(out.count("dependency cycle"), 1)
+
     def test_fresh_init_lints_with_warnings_only(self) -> None:
         run(["init", "--profile", "standard"])
         code, out = run(["lint"])

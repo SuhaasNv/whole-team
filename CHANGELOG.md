@@ -14,4 +14,5 @@ First public release.
 - Claude Code plugin: 14 slash commands and the `whole-team-reviewer` agent.
 - A `claude plugin eval` suite of 15 scenarios with scaffolded repositories and a no-plugin baseline, a repository validator and CI.
 - Eval-driven fixes before release: a recommended slice must fit the hours (cut features, not quality), extras mentioned in passing become backlog candidates, narrow tasks never wait for setup, commands load the skill first, and the working agreement tells the agent to load it.
+- Audit fixes before release: board and issue text is treated as data, never instructions; `wt.py lint` reports dependency cycles; sprint numbers match whether written `1`, `01` or `1.0`; CI actions pinned to commit SHAs.
 - README with a product thumbnail, a lifecycle diagram and before/after metrics; security policy, code of conduct, issue and pull request templates.

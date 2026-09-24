@@ -107,10 +107,40 @@ class Story:
         except ValueError:
             return float("inf")
 
+    def in_sprint(self, number: object) -> bool:
+        """True when this story's sprint equals `number`, so "01", "1" and 1.0 all match sprint 1."""
+        try:
+            return self.sprint_number == float(str(number))
+        except ValueError:
+            return False
+
     @property
     def short_title(self) -> str:
         match = re.search(r"I want (?:to )?(.+?), so that", self.title, re.IGNORECASE)
         return match.group(1) if match else self.title
+
+
+def dependency_cycles(by_id: Dict[str, Story]) -> List[List[str]]:
+    """Each dependency cycle once, as a path that ends where it starts (US-001 -> US-002 -> US-001)."""
+    cycles: List[List[str]] = []
+    done: set = set()
+
+    def visit(story_id: str, stack: List[str]) -> None:
+        if story_id in stack:
+            cycles.append(stack[stack.index(story_id):] + [story_id])
+            return
+        if story_id in done or story_id not in by_id:
+            return
+        stack.append(story_id)
+        for dep in by_id[story_id].depends:
+            if dep != story_id:
+                visit(dep, stack)
+        stack.pop()
+        done.add(story_id)
+
+    for story_id in by_id:
+        visit(story_id, [])
+    return cycles
 
 
 def parse_stories(text: str) -> List[Story]:
@@ -426,7 +456,7 @@ def cmd_status(args: argparse.Namespace) -> int:
         done = sum(1 for s in musts if s.status == "Done")
         print(f"MUST done: {done}/{len(musts)}")
 
-    in_sprint = [s for s in stories if s.sprint == str(sprint) and s.status != "Dropped"]
+    in_sprint = [s for s in stories if s.in_sprint(sprint) and s.status != "Dropped"]
     if in_sprint:
         done = sum(1 for s in in_sprint if s.status == "Done")
         print(f"Sprint {sprint}: {done}/{len(in_sprint)} stories done")
@@ -499,6 +529,8 @@ def lint(root: Path, config: dict, release: bool) -> Tuple[List[str], List[str]]
                 errors.append(f"{where}: depends on unknown {dep}")
             elif story.status == "Done" and by_id[dep].status != "Done":
                 errors.append(f"{where}: Done but its dependency {dep} is {by_id[dep].status}")
+    for cycle in dependency_cycles(by_id):
+        errors.append(f"{STORIES_PATH}: dependency cycle {' -> '.join(cycle)}; no story in it can start")
 
     limit = int(config.get("wip_limit", 2))
     active = [s.id for s in by_id.values() if s.status in ("In progress", "In review")]
@@ -593,7 +625,7 @@ def cmd_sprint(args: argparse.Namespace) -> int:
     if text is None:
         print(f"error: {STORIES_PATH} not found")
         return 1
-    stories = [s for s in parse_stories(text) if s.sprint == number]
+    stories = [s for s in parse_stories(text) if s.in_sprint(number)]
     planned = [s for s in stories if s.status != "Dropped"]
     shipped = [s for s in planned if s.status == "Done"]
     open_ = [s for s in planned if s.status != "Done"]

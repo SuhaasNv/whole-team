@@ -129,6 +129,9 @@ def main() -> int:
         return 2
     data = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
     model = sys.argv[2] if len(sys.argv) > 2 else "Claude Sonnet 5"
+    if not data.get("cases"):
+        print("error: the result has no cases; run the eval suite first")
+        return 1
     summary = summarize(data)
     (ROOT / "assets" / "metrics.html").write_text(chart(summary, model), encoding="utf-8")
     fired, total = summary["fired"]
