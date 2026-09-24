@@ -51,7 +51,7 @@ Write `SCOPE.md`:
 - **Why this scope.** Two or three sentences tying the choice to what is evaluated.
 - **MUST / SHOULD / COULD / DEFERRED / MOCKED**, each row linked to the brief (B-number). SHOULD rows name their simplification. DEFERRED and MOCKED rows say *what production would need*, so a deferral reads as judgement, not omission.
 - **Assumptions**, numbered (A1, A2, ...). Each is something you decided because the brief did not say.
-- **Cut order**: what goes first if time runs short. Decided now, calmly.
+- **Cut order**: what goes first if time runs short, decided now while there is time to think.
 - **Decision log**: dated one-liners each time scope changes.
 
 ## Step 4: Push back

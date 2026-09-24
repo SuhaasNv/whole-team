@@ -180,6 +180,15 @@ class ProjectTests(unittest.TestCase):
         self.assertEqual(config["branches"]["integration"], "main")
         self.assertEqual(config["profile"], "lite")
 
+    def test_checkpoints_default_and_change(self) -> None:
+        run(["init", "--profile", "lite"])
+        config = json.loads((self.root / ".whole-team.json").read_text())
+        self.assertEqual(config["checkpoints"], "every-step")
+        code, out = run(["init", "--checkpoints", "phase"])
+        self.assertIn("checkpoints every-step -> phase", out)
+        code, out = run(["status"])
+        self.assertIn("checkpoints phase", out)
+
     def test_docs_index_regenerated_keeping_statuses_and_extra_rows(self) -> None:
         run(["init", "--profile", "standard"])
         index = self.root / "docs/README.md"
@@ -311,6 +320,7 @@ class ProjectTests(unittest.TestCase):
         code, out = run(["agreement"])
         self.assertEqual(code, 0)
         self.assertIn("**Profile:** lite · **Board:** github", out)
+        self.assertIn("**Checkpoints:** every-step", out)
         self.assertIn("`feat/us-{id}-{slug}` from `dev`", out)
         self.assertNotIn("{profile}", out)
 

@@ -46,6 +46,8 @@ Prefixes: `FR` functional, `NFR` non-functional, `SEC` security, `UX` experience
 - Tests: 
 ```
 
+Before writing a story, check the request for readings that differ in cost ("export their data": a CSV of records, or everything including files?). Name the readings with rough sizes, recommend one, write the story for it, and record the other as an assumption or a DEFERRED item.
+
 Rules:
 - **Story 000 is the walking skeleton:** app runs, database migrates, health check answers, CI runs, one deploy works. Everything else builds on it.
 - **Acceptance criteria are testable** and include at least one edge or failure case and, where data is owned, one authorization case.

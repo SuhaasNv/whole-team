@@ -10,9 +10,9 @@
 
 </div>
 
-Your AI agent writes code at ten times your speed. It also skips planning, ignores the backlog, restyles your footer while fixing a sitemap, and would happily push to `main` at 2 a.m.
+Your AI agent writes code at ten times your speed. It also skips planning, ignores the backlog, restyles your footer while fixing a sitemap, and would push to `main` at 2 a.m. without asking.
 
-**whole-team** is a Claude Skill and Claude Code plugin that fixes the second part. It turns your agent into a small, disciplined agile team: product owner, scrum master, architect, developer, QA, security, DevOps, tech writer and reviewer. Nine hats, one agent, zero standups. You stay the boss.
+**whole-team** is a Claude Skill and Claude Code plugin that fixes the second part. It turns your agent into a small, disciplined agile team: product owner, scrum master, architect, developer, QA, security, DevOps, tech writer and reviewer. Nine hats, one agent, zero standups, and you still make every call.
 
 ## Install
 
@@ -29,7 +29,7 @@ Any other agent (Codex, Cursor, Copilot, Gemini CLI and friends):
 npx skills add SuhaasNv/whole-team
 ```
 
-Then type `/whole-team:help`. That's it. You need `git`, and Python 3.9+ for the little helper script (it's already on your Mac or Linux box).
+Then type `/whole-team:help`. You need `git`, plus Python 3.9+ for the helper script (macOS and most Linux distros ship it).
 
 <details>
 <summary>Manual install, updates and uninstall</summary>
@@ -44,17 +44,20 @@ cp -r whole-team/plugins/whole-team/skills/whole-team ~/.claude/skills/
 | Update | `claude plugin marketplace update whole-team` then `claude plugin update whole-team@whole-team` | `npx skills update whole-team` |
 | Uninstall | `claude plugin uninstall whole-team@whole-team` | `npx skills remove whole-team` |
 
-Uninstalling leaves your project docs alone. They're yours.
+Uninstalling leaves your project docs where they are.
 
 </details>
 
 ## What it does
 
-- **Scopes before it codes.** Hand it a brief and it does the math: "24 hours of work, 15 hours of you. Here's the slice that fits." Then it asks you to pick.
-- **Says no, nicely, once.** Kubernetes for a two-person recipe app? It explains the cost, offers your version anyway, and names the moment it would make sense. Your call wins.
-- **Runs real sprints.** Use cases, user stories, a Definition of Ready and Done, sprint planning, reviews and retros with actions that actually get checked.
-- **Stays in its lane.** A sitemap fix touches the sitemap. That "while you're in there" footer idea becomes a new story, not a surprise diff.
-- **Keeps your board honest.** GitHub Projects, Linear, Jira, Notion or a plain markdown board, updated in the same breath as the code.
+- **Asks, then builds, and shows its thinking.** At every step it says what it understood, lays out the options, recommends one and asks you (three questions, tops, each with a default). No code for a story until you've seen the plan. Dial it down to `phase` or `gates` when you trust it.
+- **Scopes before it codes.** Hand it a brief and it does the math: 24 hours of work, 15 hours of you, so it proposes a slice that fits and asks you to pick.
+- **Pushes back once, with numbers.** Kubernetes for a two-person recipe app? It explains the cost, offers your version anyway, and names the traffic that would justify it. You decide.
+- **Runs real sprints.** Use cases, user stories, a Definition of Ready and Done, sprint planning, reviews, and retros whose action items get checked at the next planning.
+- **Stays in its lane.** A sitemap fix touches the sitemap. Your "while you're in there" footer idea goes on the backlog as its own story.
+- **Keeps your board honest.** It moves cards on GitHub Projects, Linear, Jira, Notion or a plain markdown board in the same turn it writes the code.
+- **Uses your design tools.** At the first screen it picks up the design skills you have (frontend-design, Figma, a UI/UX skill) or suggests a couple worth installing.
+- **Runs UAT in a real browser.** With Claude in Chrome it clicks through each scenario and records a GIF as proof; every scenario that passes becomes a Playwright test for CI.
 - **Asks before anything leaves your machine.** Every push, tag, PR and deploy waits for your yes.
 
 See it scope a real brief, start to finish: [examples/assessment-walkthrough.md](examples/assessment-walkthrough.md).
@@ -81,13 +84,14 @@ Done: US-012 book a slot (48 tests passed). Next: US-013 cancel a booking. Decid
 
 The rules it lives by:
 
-1. **No story, no code.** Everything traces to a story or a bug.
-2. **Don't overengineer.** New service, layer or dependency? Name the requirement or lose it.
-3. **Push back once, with evidence.** Then do what the owner decided.
-4. **The sprint is a promise.** New work mid-sprint swaps something out. It doesn't sneak in.
-5. **Done means done.** Tests, docs, board and an independent review, not "works on my machine".
-6. **Gates are real.** Your yes covers one action, not the next one.
-7. **Tell the truth.** No "tests pass" without a test run.
+1. **Ask, then build.** Explain the plan, get a yes, then write code.
+2. **No story, no code.** Everything traces to a story or a bug.
+3. **Don't overengineer.** New service, layer or dependency? Name the requirement or lose it.
+4. **Push back once, with evidence.** Then do what the owner decided.
+5. **The sprint is a promise.** New work mid-sprint swaps something out. It doesn't sneak in.
+6. **Done means done.** Tests pass, docs match the code, the board moves, and a second agent reviews it.
+7. **Gates are real.** Each yes covers one action.
+8. **Tell the truth.** No "tests pass" without a test run.
 
 Pick how much ceremony you want: `lite` for weekend builds (five docs), `standard` for real products, `strict` when someone will audit the result.
 
@@ -134,13 +138,13 @@ At setup it asks where your stories should live and helps you plug it in. Your `
 
 Then `/mcp` to sign in. Codex, Cursor, VS Code and Gemini setups are in the [board guide](plugins/whole-team/skills/whole-team/reference/board-setup.md). Your tokens never pass through the agent.
 
-## Does it actually work?
+## Does it work?
 
 <!-- METRICS -->
 
 ## Safe by design
 
-One skill, one standard-library Python script. **No hooks, no bundled servers, no network calls of its own.** It writes docs inside your project, never overwrites yours, and asks before every push. Want a hard stop anyway? Add this to `.claude/settings.json`:
+whole-team is one skill and one standard-library Python script. **It ships without hooks or bundled servers and makes no network calls.** It writes docs inside your project, keeps the ones you already have, and asks before every push. For a hard stop on pushes, add this to `.claude/settings.json`:
 
 ```json
 { "permissions": { "ask": ["Bash(git push:*)"] } }
@@ -154,16 +158,16 @@ More in [SECURITY.md](SECURITY.md).
 
 **Will it refuse to do what I say?** No. It argues once, with numbers. Then it's your call, and it writes that down.
 
-**I already have a codebase.** Great. It reads it, documents what's there, and leaves your code alone until you pick a story.
+**I already have a codebase.** It reads it, documents what's there, and leaves your code alone until you pick a story.
 
 **How is this different from superpowers or BMAD?** [superpowers](https://github.com/obra/superpowers) makes each task well engineered; whole-team decides which tasks exist and when they ship. Use both. [BMAD](https://github.com/aj-geddes/claude-code-bmad-skills) is a full cast of agents; this is one skill that scales down to a weekend.
 
 ## Where it comes from
 
-I ran this process by hand on [PermitFlow](https://github.com/SuhaasNv/permitflow), a licensing platform I built solo with an AI agent in one-day sprints: scope cut on day one, stories mirrored to a Notion board, nothing merged without its Definition of Done, `main` frozen while the release was under review. It worked, so I packaged it.
+I ran this process by hand on [PermitFlow](https://github.com/SuhaasNv/permitflow), a licensing platform I built solo with an AI agent in one-day sprints. I cut scope on day one, mirrored every story to a Notion board, merged nothing without its Definition of Done, and froze `main` while reviewers looked at the release. The project shipped on time, so I packaged the process.
 
 ## Contributing
 
-PRs welcome, especially ones that make it smaller. See [CONTRIBUTING.md](CONTRIBUTING.md); behaviour changes come with an eval.
+PRs welcome. The ones that make it smaller get merged first. See [CONTRIBUTING.md](CONTRIBUTING.md); behaviour changes come with an eval.
 
 MIT © Suhaas Nv

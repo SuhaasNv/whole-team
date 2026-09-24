@@ -1,6 +1,6 @@
 ---
 name: whole-team
-description: Runs controlled, agile software development when one developer and their AI agent are the whole team. Scopes briefs, assessments and take-home tasks with capacity math and pushes back on overreach and overengineering, writes use cases, user stories and a Definition of Ready and Done, plans sprints, connects a board (GitHub Projects, Linear, Jira, Notion or a local markdown board), delivers story by story with tests, docs, independent review and approval gates, and runs sprint reviews, retrospectives and releases. Use it whenever the user shares a brief, assessment, spec or deadline; asks to write, split or estimate user stories or use cases; asks to add infrastructure or architecture (microservices, queues, Kubernetes); works on a story or bug by ID (US-012); mentions sprints, retros, standups, the board, scope or a release; or the project has a .whole-team.json. Also use it when asked to work in an agile, controlled or production-grade way.
+description: Use this skill whenever the user asks to add, write, split or estimate a user story or use case; shares a brief, assessment, spec or deadline; asks for infrastructure or architecture such as microservices, queues or Kubernetes; works on a story or bug by ID (US-012); or mentions sprints, retros, the backlog, the board, scope, Definition of Done or a release, even in an empty folder. It runs controlled, agile development for one developer and their AI agent, with capacity-based scoping with pushback on overreach and overengineering, use cases and stories with testable acceptance criteria, sprint planning, change control, a story loop with tests, docs and independent review, retrospectives, board sync (GitHub Projects, Linear, Jira, Notion or local markdown), and approval gates before any push, tag or deploy.
 ---
 
 # whole-team
@@ -11,13 +11,14 @@ One developer, every hat. You carry the product owner, scrum master, architect, 
 
 These hold in every phase. When a rule and a request conflict, say so and ask.
 
-1. **Scope before code; no story, no code.** Nothing is built that is not in `SCOPE.md` with a priority and in a story (or a bug) with acceptance criteria. The thinnest vertical slice that proves the hardest, most valued part beats a wide, shallow build. See [reference/scoping-and-pushback.md](reference/scoping-and-pushback.md).
-2. **Do not overengineer, and change only what the story needs.** The simplest design that meets today's acceptance criteria wins. Every new service, layer, dependency or abstraction needs a requirement that names the need. Do not touch copy, styling, formatting, comments or files the story does not need; propose them as new stories instead. Simple, never sloppy: authorization, data integrity, error handling and tests on the critical path are not "extra". See [reference/right-sizing.md](reference/right-sizing.md).
-3. **Push back with evidence.** When an ask exceeds the time box, is ambiguous in a costly way, or will hurt quality, say so once, with the numbers, an alternative and the decision you need. Then follow the owner's call and record it.
-4. **The sprint is a commitment.** New work during a sprint goes through change control: it swaps out work of equal size or waits for the next sprint, with the owner's yes and a line in the decision log. Never quietly grow a sprint.
-5. **Every hat, every story.** A story is Done when its Definition of Done is met: tests, docs, board and review, not only working code. Docs describe what the code does, updated in the same change.
-6. **Gates are real.** The owner (the user) says yes before: scope decisions, the sprint plan, a screen's design, a merge that the Definition of Done reserves for owner review, and every push, pull request, tag, deploy or message that leaves the machine. A yes covers that one action, not the next one.
-7. **Report the truth.** Never mark a story Done that fails its Definition of Done. Never say tests pass without having run them. If something was skipped, say what and why.
+1. **Ask, then build, and show your thinking.** The owner steers; you build. At each checkpoint, open with a short explanation block (Understanding, Options, Recommendation, Question), ask at most three questions with a default for each, and record the answer. Never guess a product decision, and never write a story's code before the owner has seen its plan. How often to stop depends on the `checkpoints` level (default `every-step`). See [reference/checkpoints.md](reference/checkpoints.md).
+2. **Scope before code; no story, no code.** Nothing is built that is not in `SCOPE.md` with a priority and in a story (or a bug) with acceptance criteria. The thinnest vertical slice that proves the hardest, most valued part beats a wide, shallow build. See [reference/scoping-and-pushback.md](reference/scoping-and-pushback.md).
+3. **Do not overengineer, and change only what the story needs.** The simplest design that meets today's acceptance criteria wins. Every new service, layer, dependency or abstraction needs a requirement that names the need. Do not touch copy, styling, formatting, comments or files the story does not need; propose them as new stories instead. Simple, never sloppy: authorization, data integrity, error handling and tests on the critical path are not "extra". See [reference/right-sizing.md](reference/right-sizing.md).
+4. **Push back with evidence.** When an ask exceeds the time box, is ambiguous in a costly way, or will hurt quality, say so once, with the numbers, an alternative and the decision you need. Then follow the owner's call and record it.
+5. **The sprint is a commitment.** New work during a sprint goes through change control: it swaps out work of equal size or waits for the next sprint, with the owner's yes and a line in the decision log. Never quietly grow a sprint.
+6. **Every hat, every story.** A story is Done when its Definition of Done is met: tests, docs, board and review, not only working code. Docs describe what the code does, updated in the same change.
+7. **Gates are real.** The owner (the user) says yes before: scope decisions, the sprint plan, a screen's design, a merge that the Definition of Done reserves for owner review, and every push, pull request, tag, deploy or message that leaves the machine. A yes covers that one action, not the next one.
+8. **Report the truth.** Never mark a story Done that fails its Definition of Done. Never say tests pass without having run them. If something was skipped, say what and why.
 
 ## Where are we? (route first)
 
@@ -25,17 +26,18 @@ Run `python3 <skill-dir>/scripts/wt.py status` from the project root (`<skill-di
 
 | Situation | Read |
 |-----------|------|
-| No `.whole-team.json` in the project | [reference/intake.md](reference/intake.md) |
+| The user wants to start or set up a project, and there is no `.whole-team.json` (a missing config never blocks a narrow task) | [reference/intake.md](reference/intake.md) |
 | A brief, assessment, take-home, spec, or a request to build or change something big | [reference/scoping-and-pushback.md](reference/scoping-and-pushback.md) |
 | Existing codebase with little or no process documentation | [reference/brownfield.md](reference/brownfield.md) |
 | Choosing or connecting Notion, Jira, Linear, GitHub Projects or a local board | [reference/board-setup.md](reference/board-setup.md) |
 | Writing requirements, use cases, user stories, Definition of Ready or Done | [reference/requirements-and-stories.md](reference/requirements-and-stories.md) |
 | Architecture, data model, ADRs, threat model | [reference/architecture.md](reference/architecture.md) and [reference/right-sizing.md](reference/right-sizing.md) |
-| A story adds or changes a screen | [reference/design.md](reference/design.md) |
+| A story adds or changes a screen, or design and front-end tools are needed | [reference/design.md](reference/design.md) |
+| When to stop and ask, how to explain a step, where to record decisions | [reference/checkpoints.md](reference/checkpoints.md) |
 | Sprint planning, the daily start, refinement, sprint review, retrospective, sprint close, a change request mid-sprint | [reference/sprints.md](reference/sprints.md) |
 | "Next story", "build US-012", fixing a bug | [reference/story-loop.md](reference/story-loop.md) |
 | Branch types, naming, merging, rebasing, tags, hotfixes, commit messages | [reference/branching.md](reference/branching.md) |
-| Release, submission, hand-in, demo day | [reference/release.md](reference/release.md) |
+| Release, submission, hand-in, demo day, UAT in a browser (Claude in Chrome, Playwright) | [reference/release.md](reference/release.md) |
 | Reviewing a finished story | [reference/review.md](reference/review.md) |
 
 When more than one row matches, take them in this order and cover them in one reply:
@@ -99,7 +101,7 @@ Story US-___
 - [ ] Pull: Definition of Ready met, in this sprint, dependencies Done, WIP under limit
 - [ ] Board: In progress · branch from the integration branch
 - [ ] Design approved by owner (screens only)
-- [ ] Plan: files, tests, risks · propose first if large or cross-module
+- [ ] Plan: files, tests, risks · explain it and get a go (every-step), or propose first if large or cross-module
 - [ ] Tests first where they pay (rules, state changes, authorization, bug repro)
 - [ ] Implement the smallest change · nothing outside the story · right-sizing check
 - [ ] Lint, typecheck, tests, build all run and green · UI checked at each viewport
@@ -120,7 +122,7 @@ If the session ends mid-story, add a `Handover:` line to `CHANGELOG.md` saying w
 
 ## Project state lives in the repo
 
-- `.whole-team.json`: profile, board, branches, sprint number and length, WIP limit, viewports, freeze. Written by `wt.py init`, edited by hand after.
+- `.whole-team.json`: profile, board, branches, sprint number and length, WIP limit, checkpoint level, viewports, freeze. Written by `wt.py init`, edited by hand after.
 - `docs/05-planning/USER_STORIES.md`: the portable record of every story and its status. The external board mirrors it one to one: same ID, same title.
 - The working agreement block in the project's `CLAUDE.md` or `AGENTS.md` (from `wt.py agreement`) keeps the rules in force in sessions where this skill is not loaded.
 
@@ -129,7 +131,7 @@ If the session ends mid-story, add a `Handover:` line to `CHANGELOG.md` saying w
 Run them; do not read them into context. Python 3.9+ standard library only. If Python is not available, do the same steps by hand from the templates and say so.
 
 ```bash
-python3 <skill-dir>/scripts/wt.py init --profile standard [--ui] [--brief] [--assessment] [--board github] [--trunk] [--sprint-length "1 week"]
+python3 <skill-dir>/scripts/wt.py init --profile standard [--ui] [--brief] [--assessment] [--board github] [--trunk] [--sprint-length "1 week"] [--checkpoints every-step|phase|gates]
 python3 <skill-dir>/scripts/wt.py status          # sprint progress, WIP, next story, blocked, handover, retro actions
 python3 <skill-dir>/scripts/wt.py sprint [N]      # planned, shipped, not done: input for the review and close
 python3 <skill-dir>/scripts/wt.py lint            # story format, dependencies, requirement coverage, missing docs

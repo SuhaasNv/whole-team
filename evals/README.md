@@ -16,6 +16,8 @@ A [`claude plugin eval`](https://code.claude.com/docs/en/plugin-evals) suite for
 | backlog-story | A not-ready backlog story is refined and routed through change control |
 | retro | Planned vs done and concrete, owned actions |
 | sprint-close-slip | An unfinished story slips with a reason and is never marked Done |
+| ask-before-build | At checkpoint level every-step, a story's plan is explained and approved before any code |
+| explain-decision | A database choice gets options, a recommendation and a question before anything is set up |
 | no-trigger-small-edit | A trivial question does not start the process |
 
 Each case also reports whether the skill fired, and runs a no-plugin baseline so the report shows what the skill adds (`Δ`).

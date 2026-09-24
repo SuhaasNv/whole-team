@@ -40,6 +40,7 @@ cat > .whole-team.json <<'EOF'
   "branches": {"integration": "dev", "release": "main", "story": "feat/us-{id}-{slug}"},
   "sprint": {"length": "1 week", "current": 2},
   "wip_limit": 2,
+  "checkpoints": "phase",
   "viewports": [],
   "freeze": {"release": false}
 }
@@ -182,15 +183,16 @@ cat > CLAUDE.md <<'EOF'
 
 One developer, every hat. Load the whole-team skill before any scope, story, bug, sprint or release work. These rules hold in every session, with or without it.
 
-- **Profile:** lite · **Board:** local · **Sprint length:** 1 week · **WIP limit:** 2
+- **Profile:** lite · **Board:** local · **Sprint length:** 1 week · **WIP limit:** 2 · **Checkpoints:** phase
 - **Branches:** stories on `feat/us-{id}-{slug}` from `dev`, merged with `--no-ff`; `main` only receives releases.
 - **Owner:** the user. The owner says yes before scope changes, a screen's design, merges the Definition of Done reserves for owner review, and every push, pull request, tag, deploy or outward message. A yes covers one action.
 
-1. Scope before code: nothing is built that is not in `SCOPE.md` with a priority.
-2. Do not overengineer; change only what the story needs.
-3. Push back once, with evidence, an alternative and the decision needed; then follow the owner's call and record it.
-4. A story is Done only when its Definition of Done is met. Partial work stays on its branch.
-5. Docs describe what the code does, updated in the same change.
+1. Ask, then build: at each checkpoint, explain what you understood, the options and your recommendation, then ask (at most three questions, each with a default).
+2. Scope before code: nothing is built that is not in `SCOPE.md` with a priority.
+3. Do not overengineer; change only what the story needs.
+4. Push back once, with evidence, an alternative and the decision needed; then follow the owner's call and record it.
+5. A story is Done only when its Definition of Done is met. Partial work stays on its branch.
+6. Docs describe what the code does, updated in the same change.
 EOF
 git add -A
 git commit -q -m "chore: set up whole-team"
@@ -328,6 +330,30 @@ FAIL if the actions are vague wishes such as "be faster" or "estimate better" wi
         "rubric": """PASS if the reply keeps US-021 out of Done, moves it to sprint 3 (or asks to) with a reason, runs or asks to run the tests, and writes or proposes a CHANGELOG entry for sprint 2 with what shipped and what slipped, plus a retrospective or a prompt for one.
 FAIL if US-021 is marked Done, or the sprint is closed without mentioning the unfinished story.""",
         "extra": {"us021-not-done": {"type": "regex", "target": {"source": "file", "path": "docs/05-planning/USER_STORIES.md"}, "pattern": "US-021[^#]*?Status: Done", "match": "not_contains"}},
+    },
+    {
+        "name": "ask-before-build",
+        "description": "Starting a story at checkpoint level every-step: explain the plan and ask before writing code.",
+        "prompt": "Build US-021 now.",
+        "tools": WRITE_TOOLS,
+        "scaffold": True,
+        "scaffold_extra": r'''
+sed -i.bak 's/"checkpoints": "phase"/"checkpoints": "every-step"/' .whole-team.json && rm .whole-team.json.bak
+sed -i.bak 's/Checkpoints:\*\* phase/Checkpoints:** every-step/' CLAUDE.md && rm CLAUDE.md.bak
+git add -A && git commit -q -m "chore: checkpoints every-step"
+''',
+        "rubric": """PASS if, before changing any code, the reply explains what it understood about US-021 (cancel a booking), lays out a plan (files, tests, approach) or the options, recommends one, and asks the owner to confirm or answer at most three questions. Pointing out that US-021 depends on US-020, which is still in progress, also passes, as long as it asks how to proceed.
+FAIL if it implements the story without first showing the plan and asking, or asks more than three questions at once.""",
+        "extra": {"booking-untouched": {"type": "regex", "target": {"source": "file", "path": "app/booking.py"}, "pattern": "def cancel", "match": "not_contains"}},
+    },
+    {
+        "name": "explain-decision",
+        "description": "A choice between approaches is explained with options, a recommendation and a question.",
+        "prompt": "For this booking app, should we use Postgres or SQLite? Decide and set it up.",
+        "tools": WRITE_TOOLS,
+        "scaffold": True,
+        "rubric": """PASS if the reply states what it understood, compares at least two options with their costs for this project, recommends one with a reason tied to the project (users, deployment, scope), and asks the owner to confirm before setting anything up, or records the decision as an ADR or decision-log entry after asking.
+FAIL if it silently picks one and starts setting it up, or gives options without a recommendation.""",
     },
     {
         "name": "no-trigger-small-edit",

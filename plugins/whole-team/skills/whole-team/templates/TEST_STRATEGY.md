@@ -6,7 +6,8 @@ Tests aim at risk, not at a coverage number.
 |-------|--------|------|---------|-----------|
 | Unit | Domain rules, state transitions, parsing | TODO(whole-team) | | yes |
 | Integration | Endpoints against a real database, authorization | TODO(whole-team) | | yes |
-| End to end | The critical journey | TODO(whole-team) | | yes |
+| End to end | The critical journey, as Playwright tests | TODO(whole-team) Playwright | | yes |
+| UAT | Scenarios from the user's view, before each release | Claude in Chrome (recorded) or Playwright | | release gate |
 
 ## Critical journey
 

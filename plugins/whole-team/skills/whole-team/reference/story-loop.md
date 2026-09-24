@@ -34,7 +34,7 @@ git switch -c feat/us-<id>-<slug>
 
 ## 3. Plan
 
-Write a short plan: files you expect to touch, tests you will add, risks (migrations, shared state, auth, public API changes). If the change is large (roughly more than 50 changed lines, or more than one module) and the approach was not already agreed, show the plan and wait for a yes before coding. Run the checklist in [right-sizing.md](right-sizing.md) against the plan.
+Write a short plan: files you expect to touch, tests you will add, risks (migrations, shared state, auth, public API changes). Show it in the explanation block from [checkpoints.md](checkpoints.md) and wait for a go before coding when the checkpoint level is `every-step`; at `phase` or `gates`, wait only when the change is large (roughly more than 50 changed lines, or more than one module) and the approach was not already agreed. Run the checklist in [right-sizing.md](right-sizing.md) against the plan.
 
 ## 4. Build
 
@@ -49,7 +49,7 @@ Write a short plan: files you expect to touch, tests you will add, risks (migrat
 Run everything the project has, and read the output:
 - lint, typecheck, unit and integration tests, build
 - end-to-end tests if the critical journey is affected
-- screens: open the app, check each changed screen at each viewport, all states, keyboard path; take screenshots
+- screens: open the app in a browser (Claude in Chrome or Playwright, see [release.md](release.md) UAT), check each changed screen at each viewport, all states, keyboard path; take screenshots
 - migrations: apply on a fresh database, and roll back if the project supports it
 
 Paste the decisive lines (pass counts, build result) into your notes. If something fails, fix it or stop and report it; never mark Done on a red run.
@@ -89,11 +89,11 @@ git merge --no-ff feat/us-<id>-<slug> -m "feat: <story title, short> (US-<id>)"
 
 - Board to Done in the same turn.
 - **Do not push** unless the user says yes in this turn. Ask: "Push dev to origin?" A previous yes does not carry over.
-- Partial work never merges. A story that is not whole stays on its branch, In progress, even across a sprint close.
+- Partial work never merges, not even for a demo: demo from the story branch instead. A story that is not whole stays on its branch, In progress, even across a sprint close.
 
 ## 9. Report
 
-One line:
+One line, and the Decide part always states the push situation ("push dev to origin?" or "nothing to push"), including when you stop early because the Definition of Done is not met:
 
 ```
 Done: US-<id> <title> (<test result>, <build result>). Next: US-<id> <title>. Decide: <anything the owner must choose, or none>.

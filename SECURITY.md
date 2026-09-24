@@ -14,7 +14,7 @@ whole-team is instructions plus one helper script. It has no hooks, bundles no M
 
 ## Reporting a vulnerability
 
-Please report security issues privately through GitHub: **Security → Report a vulnerability** on [SuhaasNv/whole-team](https://github.com/SuhaasNv/whole-team/security/advisories/new). Do not open a public issue for a vulnerability.
+Report security issues through GitHub's private form: **Security → Report a vulnerability** on [SuhaasNv/whole-team](https://github.com/SuhaasNv/whole-team/security/advisories/new). Do not open a public issue for a vulnerability.
 
 You can expect an acknowledgement within 7 days. Fixes are released as a patch version and noted in `CHANGELOG.md`.
 

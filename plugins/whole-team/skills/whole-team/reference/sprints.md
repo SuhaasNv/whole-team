@@ -10,7 +10,7 @@
 - Sprint review
 - Retrospective
 - Sprint close
-- When the sprint is clearly failing
+- When the sprint is failing
 
 Each ceremony is short. Its job is control, not paperwork: the owner always knows the goal, what is in the sprint, what changed and why.
 
@@ -94,7 +94,7 @@ Add an entry to `docs/05-planning/RETROSPECTIVES.md` (in `lite`, three lines in 
 - **Actions:** one to three concrete changes, each an unchecked item with an owner and "check at Sprint N+1 planning". An action is a change in how you work ("add a seed script before planning", "size stories with tests included"), not a wish.
 - Last sprint's actions: done, carried over, or dropped, each with a word on why.
 
-`wt.py status` counts open actions until they are checked.
+Draft the whole entry from what you already know, show it, then ask the owner what to add. `wt.py status` counts open actions until they are checked.
 
 ## Sprint close
 
@@ -137,6 +137,6 @@ Slipped
 Retro: docs/05-planning/RETROSPECTIVES.md#sprint-2-retro (action: seed script before Sprint 3 planning)
 ```
 
-## When the sprint is clearly failing
+## When the sprint is failing
 
 At the mid-sprint check or earlier: propose the cut from the cut order to the owner with the capacity numbers, get a yes, update `SCOPE.md`, the sprint plan and the board, and continue. A smaller goal met is better than a larger goal missed.

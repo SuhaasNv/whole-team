@@ -14,6 +14,8 @@ Classify: **greenfield** (empty or near-empty repo) or **brownfield** (working c
 
 ## 2. Ask one batch
 
+Only when the user wants to set up a project. A narrow task (write a story, split one, answer a question) is done first, with setup offered in one line at the end.
+
 Use the platform's question tool if it has one (multiple choice, recommendation first); otherwise a short numbered list. Skip any question the repo already answered and state what you inferred instead.
 
 1. **What are we building, for whom, and by when?** Or: paste the brief. If the message already contains a brief or a build request, scope it and push back first ([scoping-and-pushback.md](scoping-and-pushback.md)) and put the remaining questions below at the end of that same reply.
@@ -25,13 +27,14 @@ Use the platform's question tool if it has one (multiple choice, recommendation 
 4. **Sprint length:** default one-day sprints for projects of a week or less, one-week sprints for longer ones (pass it as `--sprint-length "1 day"`, `"1 week"`, `"2 weeks"`).
 5. **Branching:** recommend `main` (releases) + `dev` (integration) + one branch per story, merged with `--no-ff`. Offer trunk-based (short branches straight into `main`) for lite projects. Brownfield: keep what the repo already does. Details: [branching.md](branching.md).
 6. **Viewports to verify (UI only):** default 390, 1024 and 1280 px.
+7. **How often should I stop and ask?** `every-step` (default: explain and ask at every step), `phase` (only at phase boundaries) or `gates` (only for approvals). See [checkpoints.md](checkpoints.md).
 
 Do not ask about tech stack preferences the user has not raised unless the choice blocks the first story; propose a boring default in the architecture step instead.
 
 ## 3. Configure
 
 ```bash
-python3 <skill-dir>/scripts/wt.py init --profile <p> [--ui] [--brief] [--assessment] [--trunk] --board <github|linear|jira|notion|local>
+python3 <skill-dir>/scripts/wt.py init --profile <p> [--ui] [--brief] [--assessment] [--trunk] [--checkpoints <level>] --board <github|linear|jira|notion|local>
 ```
 
 This writes `.whole-team.json` and the profile's documents from templates (skipping any that exist). Then:

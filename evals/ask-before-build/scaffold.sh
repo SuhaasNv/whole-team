@@ -173,14 +173,6 @@ git add -A
 git commit -q -m "chore: set up whole-team"
 git switch -q -c dev
 
-cat >> tests/test_booking.py <<'EOF'
-
-
-class PendingTests(unittest.TestCase):
-    def test_booking_is_listed(self):
-        self.fail("listing not implemented")
-
-    def test_booking_confirmation(self):
-        self.fail("confirmation not implemented")
-EOF
-git add -A && git commit -q -m "test: pending booking tests"
+sed -i.bak 's/"checkpoints": "phase"/"checkpoints": "every-step"/' .whole-team.json && rm .whole-team.json.bak
+sed -i.bak 's/Checkpoints:\*\* phase/Checkpoints:** every-step/' CLAUDE.md && rm CLAUDE.md.bak
+git add -A && git commit -q -m "chore: checkpoints every-step"

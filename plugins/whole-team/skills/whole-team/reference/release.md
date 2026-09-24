@@ -30,7 +30,23 @@ Semantic versioning. Before 1.0.0, a minor bump per release is fine. Show the ve
 
 ## UAT
 
-`docs/09-uat/UAT_PLAN.md` (strict): scenarios written from the user's view, one per critical path and role, each with steps, expected result, actual result, pass or fail, date and environment. Run them yourself on the deployed environment with a browser tool if available; the owner runs the ones that need their judgement.
+`docs/09-uat/UAT_PLAN.md` (strict; a short list in `TEST_STRATEGY.md` otherwise): scenarios written from the user's view, one per critical path and role, each with steps, expected result, actual result, pass or fail, date, environment and evidence.
+
+**Run them in a real browser, and record them.** Recommend the owner's best option at the first UAT, and explain why:
+
+| Tool | Use it for | Set up |
+|------|------------|--------|
+| **Claude in Chrome** (the agent drives the owner's own browser) | Walking each scenario like a user would, including logged-in flows, and recording a GIF of each run as evidence | Install the extension from claude.com/claude-in-chrome; in Claude Code run `/chrome` (or start with `claude --chrome`). Needs a Claude Pro, Max, Team or Enterprise login |
+| **Playwright** (scripted, repeatable) | Turning each passed scenario into an end-to-end test that runs in CI on every change | Claude Code: `/plugin install playwright@claude-plugins-official` for the browser tools; in the project: `npm init playwright@latest` (or `pip install pytest-playwright`) for the test suite |
+
+How a UAT run goes:
+1. Show the owner the scenarios you will run and on which environment; ask for a yes (a run can create data on that environment).
+2. For each scenario: drive the browser step by step, compare with the expected result, save the evidence (a GIF or screenshots named `UAT-03-<slug>`), and fill the row: actual, pass or fail, date, environment.
+3. A failure becomes a bug (`fix/` branch, failing test first). Never mark a failed scenario passed.
+4. For each passed scenario that is not yet automated, write or extend a Playwright test so the next release checks it without a human. Keep the scripts in the repository (`e2e/` or `tests/e2e/`) and run them in CI.
+5. Scenarios that need human judgement (copy, look and feel, legal wording) go to the owner with the evidence attached.
+
+Never enter real passwords, payment details or personal data during UAT: use the seeded demo accounts.
 
 ## Production readiness (strict)
 

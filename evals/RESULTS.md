@@ -1,7 +1,9 @@
 # Eval results
 
-Each run: a fresh agent with the skill loaded, in a scratch repository, given the case's query. Graded against every `expected_behavior` line.
+Results for each released version. Scores are the mean over all 13 cases of the weighted share of graders passed; "without" is the same agent and prompts with no plugin loaded.
 
-| Date | Skill version | Model | Cases | Passed | Notes |
-|------|---------------|-------|-------|--------|-------|
-| 2026-09-24 | 0.1.0 (pre-release) | Claude Sonnet 5 | assessment-pushback, overengineering, intake-board-choice, narrow-question | 4/4 | Found five points of friction, all fixed before release: routing precedence when two rows match, a build request before setup, the first commit on `main`, the sprint length unit, lint noise from template example rows |
+Setup: `claude plugin eval . --runs 2 --scaffold --allow-tools Edit Write --model sonnet --judge-model sonnet`, Claude Code 2.1.281 on macOS. Bash was not granted on the test machine (its Bash sandbox refuses to start there), so the agent could edit files but not run `git` or `wt.py`; graders that check commands still ran.
+
+| Date | Version | With skill | Without | Skill fired | Cost |
+|------|---------|-----------:|--------:|------------:|-----:|
+<!-- RESULTS_ROW -->

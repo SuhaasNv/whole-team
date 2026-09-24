@@ -15,6 +15,7 @@ cat > .whole-team.json <<'EOF'
   "branches": {"integration": "dev", "release": "main", "story": "feat/us-{id}-{slug}"},
   "sprint": {"length": "1 week", "current": 2},
   "wip_limit": 2,
+  "checkpoints": "phase",
   "viewports": [],
   "freeze": {"release": false}
 }
@@ -157,15 +158,16 @@ cat > CLAUDE.md <<'EOF'
 
 One developer, every hat. Load the whole-team skill before any scope, story, bug, sprint or release work. These rules hold in every session, with or without it.
 
-- **Profile:** lite · **Board:** local · **Sprint length:** 1 week · **WIP limit:** 2
+- **Profile:** lite · **Board:** local · **Sprint length:** 1 week · **WIP limit:** 2 · **Checkpoints:** phase
 - **Branches:** stories on `feat/us-{id}-{slug}` from `dev`, merged with `--no-ff`; `main` only receives releases.
 - **Owner:** the user. The owner says yes before scope changes, a screen's design, merges the Definition of Done reserves for owner review, and every push, pull request, tag, deploy or outward message. A yes covers one action.
 
-1. Scope before code: nothing is built that is not in `SCOPE.md` with a priority.
-2. Do not overengineer; change only what the story needs.
-3. Push back once, with evidence, an alternative and the decision needed; then follow the owner's call and record it.
-4. A story is Done only when its Definition of Done is met. Partial work stays on its branch.
-5. Docs describe what the code does, updated in the same change.
+1. Ask, then build: at each checkpoint, explain what you understood, the options and your recommendation, then ask (at most three questions, each with a default).
+2. Scope before code: nothing is built that is not in `SCOPE.md` with a priority.
+3. Do not overengineer; change only what the story needs.
+4. Push back once, with evidence, an alternative and the decision needed; then follow the owner's call and record it.
+5. A story is Done only when its Definition of Done is met. Partial work stays on its branch.
+6. Docs describe what the code does, updated in the same change.
 EOF
 git add -A
 git commit -q -m "chore: set up whole-team"
