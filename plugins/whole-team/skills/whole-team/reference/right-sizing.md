@@ -30,7 +30,7 @@ Scope creep also happens one diff at a time: a bug fix that also restyles the pa
 - Every file in the diff is explained by the story's acceptance criteria or its tests and docs.
 - No unrequested changes to copy, colours, layout, formatting, comments or dependencies.
 - No extra artifacts (reports, summaries, new docs) unless the story or the hats table asks for them.
-- Improvements you notice become candidate stories, not part of this one.
+- Improvements you notice, and extras the user mentions in passing, become candidate stories, not part of this one. Say so in the reply.
 
 ## Red-flag phrases
 

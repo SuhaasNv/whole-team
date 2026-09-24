@@ -1,0 +1,170 @@
+<!doctype html>
+<!-- Source for lifecycle.png (README). Render: python3 tools/render_assets.py -->
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --bg: #0d0f13;
+    --panel: #151820;
+    --line: #2a303c;
+    --text: #f3f4f6;
+    --muted: #9aa3b2;
+    --dim: #6b7383;
+    --accent: #e8744f;
+    --green: #5fbf85;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1600px; height: 900px; overflow: hidden; }
+  body {
+    position: relative;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 1px 1px, #1a1e27 1px, transparent 0) 0 0 / 26px 26px,
+      var(--bg);
+  }
+  .title { position: absolute; left: 64px; top: 40px; font-size: 30px; font-weight: 700; letter-spacing: -0.01em; }
+  .title span { color: var(--accent); }
+  .legend { position: absolute; right: 64px; top: 48px; display: flex; gap: 26px; font-size: 16px; color: var(--muted); align-items: center; }
+  .legend .pill { margin-right: 8px; }
+  .label { position: absolute; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); font-weight: 600; }
+  .frame { position: absolute; border: 1px dashed #343b49; border-radius: 18px; }
+  .node {
+    position: absolute; width: 216px; height: 132px; padding: 14px 16px;
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .node.wide { width: 256px; height: 124px; }
+  .node.gate { border-color: #6b3b2b; }
+  .node h3 { font-size: 18px; font-weight: 650; line-height: 1.2; }
+  .node p { font-size: 13.5px; color: var(--muted); line-height: 1.35; margin-top: 4px; }
+  .node code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 12.5px; color: var(--accent); white-space: nowrap; }
+  .node .n { font-size: 12px; color: var(--dim); font-weight: 600; margin-bottom: 2px; }
+  .pill {
+    display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+    color: #0d0f13; background: var(--accent); border-radius: 999px; padding: 3px 9px;
+  }
+  .node .pill { position: absolute; top: -11px; right: 12px; }
+  svg { position: absolute; left: 0; top: 0; }
+  .note { position: absolute; font-size: 14px; color: var(--muted); }
+  .rules { position: absolute; left: 64px; top: 772px; width: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 36px; }
+  .rules div { font-size: 16px; color: var(--muted); display: flex; gap: 10px; align-items: baseline; }
+  .rules b { color: var(--text); font-weight: 600; }
+  .rules div::before { content: ""; width: 7px; height: 7px; border-radius: 2px; background: var(--accent); flex: none; transform: translateY(-2px); }
+</style>
+</head>
+<body>
+  <div class="title">The whole-team <span>lifecycle</span></div>
+  <div class="legend">
+    <div><span class="pill">your yes</span>owner gate</div>
+    <div style="color: var(--accent); font-family: 'SF Mono', Menlo, monospace; font-size: 15px;">/whole-team:…</div><div style="margin-left: -18px">slash command</div>
+  </div>
+
+  <svg width="1600" height="900" viewBox="0 0 1600 900">
+    <defs>
+      <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#6b7383"/>
+      </marker>
+      <marker id="o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#e8744f"/>
+      </marker>
+    </defs>
+    <g stroke="#6b7383" stroke-width="2" fill="none" marker-end="url(#a)">
+      <!-- set-up row -->
+      <path d="M320 202 H352"/>
+      <path d="M616 202 H648"/>
+      <path d="M912 202 H944"/>
+      <path d="M1208 202 H1240"/>
+      <!-- into the sprint -->
+      <path d="M1376 266 V300 H110 V388"/>
+      <!-- sprint row -->
+      <path d="M280 458 H310"/>
+      <path d="M532 458 H562"/>
+      <path d="M784 458 H814"/>
+      <path d="M1036 458 H1066"/>
+      <path d="M1288 458 H1318"/>
+      <!-- release -->
+      <path d="M1480 526 V740"/>
+    </g>
+    <g stroke="#e8744f" stroke-width="2" fill="none" marker-end="url(#o)">
+      <!-- next story: story loop back to daily start -->
+      <path d="M660 526 C660 584, 436 584, 436 532"/>
+      <!-- next sprint: close back to planning -->
+      <path d="M1390 526 V632 H150 V532"/>
+    </g>
+  </svg>
+
+  <!-- set up once -->
+  <div class="label" style="left: 64px; top: 108px;">Set up once</div>
+  <div class="node wide" style="left: 64px; top: 140px;">
+    <div><div class="n">1</div><h3>Intake</h3><p>Reads the repo, asks one batch of questions, connects the board</p></div>
+    <code>/whole-team:start</code>
+  </div>
+  <div class="node wide gate" style="left: 360px; top: 140px;">
+    <span class="pill">your yes</span>
+    <div><div class="n">2</div><h3>Scope and push back</h3><p>Capacity math, MoSCoW, cut order, decision log</p></div>
+    <code>/whole-team:scope</code>
+  </div>
+  <div class="node wide" style="left: 656px; top: 140px;">
+    <div><div class="n">3</div><h3>Use cases and stories</h3><p>Testable criteria, Definition of Ready and Done</p></div>
+    <code>/whole-team:plan</code>
+  </div>
+  <div class="node wide" style="left: 952px; top: 140px;">
+    <div><div class="n">4</div><h3>Architecture</h3><p>Right-sized design, ADRs, threat model</p></div>
+    <code style="color: var(--dim);">right-sizing checklist</code>
+  </div>
+  <div class="node wide gate" style="left: 1248px; top: 140px;">
+    <span class="pill">your yes</span>
+    <div><div class="n">5</div><h3>Design</h3><p>Screens mocked and approved before any UI code</p></div>
+    <code style="color: var(--dim);">UI projects only</code>
+  </div>
+
+  <!-- every sprint -->
+  <div class="frame" style="left: 50px; top: 326px; width: 1500px; height: 340px;"></div>
+  <div class="label" style="left: 130px; top: 344px;">Every sprint</div>
+  <div class="node gate" style="left: 62px; top: 392px;">
+    <span class="pill">your yes</span>
+    <div><h3>Sprint planning</h3><p>Goal, ready stories, 70% capacity</p></div>
+    <code>/whole-team:sprint</code>
+  </div>
+  <div class="node" style="left: 314px; top: 392px;">
+    <div><h3>Daily start</h3><p>Status, handover, today's focus</p></div>
+    <code>/whole-team:status</code>
+  </div>
+  <div class="node" style="left: 566px; top: 392px;">
+    <div><h3>Story loop</h3><p>Branch, tests, smallest change, docs, review, merge</p></div>
+    <code>/whole-team:story</code>
+  </div>
+  <div class="node gate" style="left: 818px; top: 392px;">
+    <span class="pill">your yes</span>
+    <div><h3>Sprint review</h3><p>Goal demonstrated; you accept each story</p></div>
+    <code>/whole-team:close-sprint</code>
+  </div>
+  <div class="node" style="left: 1070px; top: 392px;">
+    <div><h3>Retrospective</h3><p>Went well, slowed us, owned actions</p></div>
+    <code>/whole-team:retro</code>
+  </div>
+  <div class="node" style="left: 1322px; top: 392px;">
+    <div><h3>Sprint close</h3><p>Tests, board, CHANGELOG, scope re-check</p></div>
+    <code>/whole-team:close-sprint</code>
+  </div>
+  <div class="note" style="left: 510px; top: 588px; color: var(--accent);">next story</div>
+  <div class="note" style="left: 740px; top: 640px; color: var(--accent);">next sprint</div>
+
+  <!-- release -->
+  <div class="node gate" style="left: 1322px; top: 744px;">
+    <span class="pill">your yes</span>
+    <div><h3>Release</h3><p>Release lint, notes, UAT; push, tag, deploy</p></div>
+    <code>/whole-team:release</code>
+  </div>
+  <div class="note" style="left: 1236px; top: 690px; width: 232px; text-align: right;">when every MUST is done</div>
+
+  <div class="rules">
+    <div><b>No story, no code</b>&nbsp;everything traces to a story or a bug</div>
+    <div><b>WIP ≤ 2</b>&nbsp;finish before starting</div>
+    <div><b>Change control</b>&nbsp;mid-sprint work swaps something out</div>
+    <div><b>Nothing leaves your machine</b>&nbsp;without your yes</div>
+  </div>
+</body>
+</html>

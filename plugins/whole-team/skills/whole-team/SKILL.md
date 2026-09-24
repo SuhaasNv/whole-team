@@ -1,6 +1,6 @@
 ---
 name: whole-team
-description: Runs controlled, agile software development when one developer and their AI agent are the whole team. Scopes briefs, assessments and take-home tasks and pushes back on overreach and overengineering, writes use cases, user stories, Definition of Ready and Done, plans sprints, connects a board (GitHub Projects, Linear, Jira, Notion or a local markdown board), delivers story by story with tests, docs, independent review and approval gates, and runs sprint reviews, retrospectives and releases. Use when starting a new project or adopting an existing repo, when given a brief, assessment, spec or deadline, when planning scope, use cases, stories or sprints, when the user says "next story", "close the sprint", "retro", "status" or "release", or asks to work in an agile, controlled or production-grade way.
+description: Runs controlled, agile software development when one developer and their AI agent are the whole team. Scopes briefs, assessments and take-home tasks with capacity math and pushes back on overreach and overengineering, writes use cases, user stories and a Definition of Ready and Done, plans sprints, connects a board (GitHub Projects, Linear, Jira, Notion or a local markdown board), delivers story by story with tests, docs, independent review and approval gates, and runs sprint reviews, retrospectives and releases. Use it whenever the user shares a brief, assessment, spec or deadline; asks to write, split or estimate user stories or use cases; asks to add infrastructure or architecture (microservices, queues, Kubernetes); works on a story or bug by ID (US-012); mentions sprints, retros, standups, the board, scope or a release; or the project has a .whole-team.json. Also use it when asked to work in an agile, controlled or production-grade way.
 ---
 
 # whole-team
@@ -39,7 +39,7 @@ Run `python3 <skill-dir>/scripts/wt.py status` from the project root (`<skill-di
 | Reviewing a finished story | [reference/review.md](reference/review.md) |
 
 When more than one row matches, take them in this order and cover them in one reply:
-1. **A narrow question** (for example "is this story too big?"): answer it with the relevant part only. Do not start the lifecycle unasked.
+1. **A narrow question or task** (for example "is this story too big?", "add a story for X", "split this"): do it now with the relevant reference only. Missing setup never blocks a narrow task; offer setup in one line at the end, at most.
 2. **A brief or a build request**: scope it and push back first, because that decision is the most valuable thing you can give.
 3. **Missing setup**: then ask the remaining intake questions in the same message, so the owner answers once.
 

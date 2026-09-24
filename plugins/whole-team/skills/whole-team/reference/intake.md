@@ -17,7 +17,7 @@ Classify: **greenfield** (empty or near-empty repo) or **brownfield** (working c
 Use the platform's question tool if it has one (multiple choice, recommendation first); otherwise a short numbered list. Skip any question the repo already answered and state what you inferred instead.
 
 1. **What are we building, for whom, and by when?** Or: paste the brief. If the message already contains a brief or a build request, scope it and push back first ([scoping-and-pushback.md](scoping-and-pushback.md)) and put the remaining questions below at the end of that same reply.
-2. **Profile:** lite, standard or strict. Recommend from signals:
+2. **Ceremony profile: lite, standard or strict** (name all three and recommend one). Recommend from signals:
    - assessment, take-home, client handover, regulated domain: `strict` (or `standard` if the time box is under two days)
    - real users or a portfolio piece: `standard`
    - prototype, weekend, internal tool: `lite`

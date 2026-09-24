@@ -1,6 +1,6 @@
 ## Working agreement (whole-team)
 
-One developer, every hat. These rules hold in every session, with or without the whole-team skill loaded.
+One developer, every hat. Load the whole-team skill before any scope, story, bug, sprint or release work. These rules hold in every session, with or without it.
 
 - **Profile:** {profile} · **Board:** {board} · **Sprint length:** {sprint_length} · **WIP limit:** {wip_limit}
 - **Branches:** stories on `{story_branch}` from `{integration}`, merged with `--no-ff`; `{release}` only receives releases.

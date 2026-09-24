@@ -12,4 +12,6 @@ First public release.
 - Templates for every document the profiles create, including use cases, retrospectives and the working agreement.
 - `wt.py` helper (standard library only): `init`, `status`, `sprint`, `lint`, `lint --release`, `kanban`, `agreement`.
 - Claude Code plugin: 14 slash commands and the `whole-team-reviewer` agent.
-- A `claude plugin eval` suite of 13 scenarios with scaffolded repositories, a repository validator and CI.
+- A `claude plugin eval` suite of 13 scenarios with scaffolded repositories and a no-plugin baseline, a repository validator and CI.
+- Eval-driven fixes before release: a recommended slice must fit the hours (cut features, not quality), extras mentioned in passing become backlog candidates, narrow tasks never wait for setup, commands load the skill explicitly, and the working agreement tells the agent to load it.
+- README with a product thumbnail, a lifecycle diagram and before/after metrics; security policy, code of conduct, issue and pull request templates.

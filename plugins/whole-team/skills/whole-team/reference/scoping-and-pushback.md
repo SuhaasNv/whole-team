@@ -41,7 +41,7 @@ Show the math to the user in a small table. Numbers make pushback a shared fact 
 
 ## Step 3: Choose the slice
 
-Prefer depth over breadth. Pick the thinnest vertical slice that:
+Prefer depth over breadth. **The recommended slice must fit:** add up its sizes and show the sum next to the hours available (`slice 14 h ≤ 15 h available`). If it does not fit, cut whole features, not quality: do not drop the UI, the tests or the deployment to squeeze more features in when the brief grades quality or expects a product people use. Pick the thinnest vertical slice that:
 - exercises the hardest and most valued parts of the brief end to end,
 - has every screen paired with the thing that consumes it (no dead ends),
 - can be finished, tested, documented and deployed inside 70 percent of the time box.

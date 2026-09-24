@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 EVALS = ROOT / "evals"
 PLUGIN_FROM_CASE = "../../plugins/whole-team"
-SKILL_FIRED = '"skill"\\s*:\\s*"(?:[\\w-]+:)?whole-team"'
+SKILL_FIRED = '"skill"\\s*:\\s*"whole-team(?::[\\w-]+)?"'
 WRITE_TOOLS = ["Read", "Glob", "Grep", "Skill", "Bash", "Edit", "Write"]
 READ_TOOLS = ["Read", "Glob", "Grep", "Skill", "Bash"]
 
@@ -175,6 +175,23 @@ class BookingTests(unittest.TestCase):
         with self.assertRaises(SlotTaken):
             calendar.book("09:00", "ben")
 EOF
+cat > CLAUDE.md <<'EOF'
+# Clinic app
+
+## Working agreement (whole-team)
+
+One developer, every hat. Load the whole-team skill before any scope, story, bug, sprint or release work. These rules hold in every session, with or without it.
+
+- **Profile:** lite · **Board:** local · **Sprint length:** 1 week · **WIP limit:** 2
+- **Branches:** stories on `feat/us-{id}-{slug}` from `dev`, merged with `--no-ff`; `main` only receives releases.
+- **Owner:** the user. The owner says yes before scope changes, a screen's design, merges the Definition of Done reserves for owner review, and every push, pull request, tag, deploy or outward message. A yes covers one action.
+
+1. Scope before code: nothing is built that is not in `SCOPE.md` with a priority.
+2. Do not overengineer; change only what the story needs.
+3. Push back once, with evidence, an alternative and the decision needed; then follow the owner's call and record it.
+4. A story is Done only when its Definition of Done is met. Partial work stays on its branch.
+5. Docs describe what the code does, updated in the same change.
+EOF
 git add -A
 git commit -q -m "chore: set up whole-team"
 git switch -q -c dev
@@ -297,9 +314,8 @@ FAIL if it starts implementing reminders.""",
     {
         "name": "retro",
         "description": "A retrospective with concrete, owned actions.",
-        "prompt": "Run the retro for sprint 1. We planned 6 stories and finished 4; seed data was rebuilt by hand three times and the auth story was underestimated.",
-        "tools": WRITE_TOOLS,
-        "scaffold": True,
+        "prompt": "We just finished sprint 1 of a small booking app (no repo handy, just run it here). We planned 6 stories and finished 4; seed data was rebuilt by hand three times and the auth story was underestimated. Run the retro and give me the retro entry.",
+        "tools": READ_TOOLS,
         "rubric": """PASS if the reply (or the retrospective it writes) records planned versus done (6 planned, 4 done), lists what went well and what slowed the team, and gives one to three concrete actions, each with an owner or a check at the next sprint planning (for example a seed script, sizing stories with tests included).
 FAIL if the actions are vague wishes such as "be faster" or "estimate better" with no concrete change, or there are no actions.""",
     },
