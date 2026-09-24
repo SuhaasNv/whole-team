@@ -6,7 +6,7 @@ All notable changes to whole-team. Versions follow semantic versioning.
 
 First public release.
 
-- `whole-team` skill: seven rules, a routing table with precedence, ceremony profiles (lite, standard, strict), the hats table and the story loop.
+- `whole-team` skill: eight rules, a routing table with precedence, ceremony profiles (lite, standard, strict), the hats table and the story loop.
 - Controlled agile: sprint planning, daily start, refinement with a Definition of Ready, change control during a sprint, sprint review, retrospectives with tracked actions, and the sprint close ritual.
 - Reference guides: intake, scoping and pushback, right-sizing (including "change only what the story needs"), board setup for GitHub Projects, Linear, Jira, Notion or a local board across Claude Code, Codex, Cursor, VS Code and Gemini CLI, requirements, use cases and stories, architecture, design, story loop, branching, sprints, release, brownfield adoption and independent review.
 - Templates for every document the profiles create, including use cases, retrospectives and the working agreement.
