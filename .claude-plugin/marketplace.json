@@ -1,0 +1,24 @@
+{
+  "name": "whole-team",
+  "owner": {
+    "name": "Suhaas Nv",
+    "url": "https://github.com/SuhaasNv"
+  },
+  "metadata": {
+    "description": "Agile delivery skills for one developer and their AI agent."
+  },
+  "plugins": [
+    {
+      "name": "whole-team",
+      "source": "./",
+      "description": "One developer, every hat. Scope and push back, plan stories, deliver with tests, docs and review, close sprints, release.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Suhaas Nv"
+      },
+      "license": "MIT",
+      "keywords": ["agile", "sdlc", "user-stories", "scoping"],
+      "category": "development"
+    }
+  ]
+}

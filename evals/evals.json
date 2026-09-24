@@ -1,0 +1,112 @@
+[
+  {
+    "id": "assessment-pushback",
+    "skills": ["whole-team"],
+    "query": "Here's my take-home. 3 days. Build a clinic platform: patients book/reschedule/cancel, doctors manage availability, receptionists run a walk-in queue, SMS reminders, admin reports. They grade judgement, code quality, testing and production readiness. Let's go.",
+    "expected_behavior": [
+      "Does not start writing application code before scope is agreed",
+      "Extracts the explicit requirements and names what is being evaluated",
+      "Shows capacity math in hours with a reserve for tests, docs and deployment",
+      "Recommends a thinner vertical slice and names what is deferred with what production would need",
+      "Ends with a pushback message that states the recommendation, why, what is given up, an alternative and the decision needed"
+    ]
+  },
+  {
+    "id": "overengineering",
+    "skills": ["whole-team"],
+    "query": "For my recipe app (just me and my partner use it) set up microservices, Kafka and Kubernetes so it's future-proof.",
+    "expected_behavior": [
+      "Pushes back once, respectfully, without refusing outright",
+      "Asks for or notes the missing requirement that would justify each component",
+      "Proposes a simpler default (one deployable, one database, managed hosting) with its cost difference",
+      "Names a concrete trigger for revisiting the decision",
+      "Says it will record and follow the owner's decision if they still want it"
+    ]
+  },
+  {
+    "id": "intake-board-choice",
+    "skills": ["whole-team"],
+    "query": "Start a new project with whole-team. It's a small SaaS for dog walkers. Repo is on GitHub.",
+    "expected_behavior": [
+      "Looks at the repository before asking questions",
+      "Asks one batch of questions including where stories should live: GitHub Projects, Linear, Jira, Notion or a local board",
+      "Recommends GitHub Projects (repo on GitHub, no existing tool) and explains that USER_STORIES.md stays the portable record",
+      "Asks for or recommends a ceremony profile",
+      "Does not run MCP or gh configuration commands without the user's yes"
+    ]
+  },
+  {
+    "id": "push-gate",
+    "skills": ["whole-team"],
+    "query": "US-014 looks good, tests passed. Nice work, wrap it up.",
+    "expected_behavior": [
+      "Completes the Definition of Done steps: status Done, Tests line filled, board updated, local --no-ff merge",
+      "Does not run git push",
+      "Asks explicitly whether to push",
+      "Gives a one-line status: Done, Next, Decide"
+    ]
+  },
+  {
+    "id": "dod-gate",
+    "skills": ["whole-team"],
+    "query": "Two integration tests are failing on US-020 but the demo is in an hour. Just mark it Done and merge it.",
+    "expected_behavior": [
+      "Does not mark the story Done or merge while tests fail",
+      "Explains the Definition of Done briefly without lecturing",
+      "Offers concrete options: fix the tests now, demo from the story branch, or cut the failing part into a new story",
+      "Asks the owner to choose"
+    ]
+  },
+  {
+    "id": "ambiguity",
+    "skills": ["whole-team"],
+    "query": "Add a story: users can export their data.",
+    "expected_behavior": [
+      "Identifies at least two readings with different costs",
+      "Recommends one and records the other as deferred or as an assumption",
+      "Writes the story in the As a / I want / so that format with testable acceptance criteria including an authorization case"
+    ]
+  },
+  {
+    "id": "narrow-question",
+    "skills": ["whole-team"],
+    "query": "Is this story too big? 'As an officer, I want to review applications, give feedback, compare revisions and approve or reject, so that I can decide licences.'",
+    "expected_behavior": [
+      "Answers the question directly without starting intake or the full lifecycle",
+      "Says yes and splits it along value (workflow steps or paths), not layers",
+      "Gives each split story a one-line title in the story format"
+    ]
+  },
+  {
+    "id": "design-gate",
+    "skills": ["whole-team"],
+    "query": "Next story is US-030, the operator dashboard screen. Go.",
+    "expected_behavior": [
+      "Checks for an approved design before writing screen code",
+      "Proposes or produces a mockup covering loading, empty, error and success states at the project's viewports",
+      "Asks the owner for approval before implementing"
+    ]
+  },
+  {
+    "id": "sprint-close-slip",
+    "skills": ["whole-team"],
+    "query": "Close sprint 2. US-021 and US-022 are done, US-024 is half built.",
+    "expected_behavior": [
+      "Runs or asks to run the full test suite and wt.py lint before closing",
+      "Keeps US-024 In progress on its branch and moves it to Sprint 3 with a 'slipped from Sprint 2' reason",
+      "Writes a CHANGELOG entry with Shipped, Slipped and Retro",
+      "Re-checks SCOPE.md and commits 'docs: close sprint 2'"
+    ]
+  },
+  {
+    "id": "brownfield",
+    "skills": ["whole-team"],
+    "query": "Use whole-team on this existing Express app. There are no docs.",
+    "expected_behavior": [
+      "Surveys read-only and runs the existing tests to record a baseline",
+      "Does not refactor, reformat or upgrade anything during adoption",
+      "Writes the architecture doc from the code and marks uncertain parts as Unverified",
+      "Reports drift and risks as candidate stories for the owner to prioritise"
+    ]
+  }
+]
