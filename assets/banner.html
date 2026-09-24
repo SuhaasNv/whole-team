@@ -1,0 +1,57 @@
+<!doctype html>
+<!-- Source for banner.png and social-preview.png. Render: python3 tools/render_assets.py -->
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --line: #262b36;
+    --text: #f3f4f6;
+    --muted: #9aa3b2;
+    --accent: #e8744f;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 640px; background: var(--bg); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 96px;
+    background:
+      radial-gradient(circle at 1px 1px, #1d212a 1px, transparent 0) 0 0 / 28px 28px,
+      var(--bg);
+  }
+  .mark { display: flex; align-items: center; gap: 14px; color: var(--muted); font-size: 22px; letter-spacing: 0.02em; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); }
+  h1 { font-size: 112px; font-weight: 750; letter-spacing: -0.035em; margin-top: 18px; line-height: 1; }
+  .tagline { font-size: 40px; font-weight: 600; margin-top: 22px; }
+  .tagline span { color: var(--accent); }
+  .sub { font-size: 25px; color: var(--muted); margin-top: 14px; max-width: 980px; line-height: 1.4; }
+  .hats { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 38px; }
+  .hat {
+    font-size: 18px; color: var(--text); padding: 7px 14px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--panel);
+  }
+  .cmd {
+    margin-top: 34px; font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 21px; color: var(--muted);
+  }
+  .cmd b { color: var(--text); font-weight: 500; }
+</style>
+</head>
+<body>
+  <div class="mark"><div class="dot"></div>Agent skill · Claude Code plugin</div>
+  <h1>whole-team</h1>
+  <div class="tagline">One developer, <span>every hat.</span></div>
+  <div class="sub">Controlled, agile development for you and your AI agent: scope and pushback, use cases and stories, sprints, reviews and retros, and a gate on every push.</div>
+  <div class="hats">
+    <div class="hat">Product owner</div><div class="hat">Scrum master</div><div class="hat">Architect</div>
+    <div class="hat">Developer</div><div class="hat">QA</div><div class="hat">Security</div>
+    <div class="hat">DevOps</div><div class="hat">Tech writer</div><div class="hat">Reviewer</div>
+  </div>
+  <div class="cmd">/plugin marketplace add <b>SuhaasNv/whole-team</b></div>
+</body>
+</html>

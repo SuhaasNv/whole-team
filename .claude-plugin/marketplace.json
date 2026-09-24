@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "whole-team",
-      "source": "./",
+      "source": "./plugins/whole-team",
       "description": "One developer, every hat. Scope and push back, plan stories, deliver with tests, docs and review, close sprints, release.",
       "version": "0.1.0",
       "author": {

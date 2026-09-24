@@ -20,7 +20,8 @@ from typing import List, Optional, Tuple
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-SKILLS = ROOT / "skills"
+PLUGIN = ROOT / "plugins" / "whole-team"
+SKILLS = PLUGIN / "skills"
 NAME_RULE = re.compile(r"^[a-z0-9-]{1,64}$")
 LINK = re.compile(r"\[[^\]]*\]\(([^)\s]+)\)")
 MAX_SKILL_LINES = 500
@@ -109,11 +110,11 @@ def check_links(path: Path) -> None:
 
 
 def check_commands_and_agents() -> None:
-    for command in sorted((ROOT / "commands").glob("*.md")):
+    for command in sorted((PLUGIN / "commands").glob("*.md")):
         data, _ = frontmatter(command)
         if data is not None and not data.get("description"):
             fail(f"{command.relative_to(ROOT)}: description is required")
-    for agent in sorted((ROOT / "agents").glob("*.md")):
+    for agent in sorted((PLUGIN / "agents").glob("*.md")):
         data, _ = frontmatter(agent)
         if data is None:
             continue
@@ -126,7 +127,7 @@ def check_commands_and_agents() -> None:
 
 def check_manifests() -> None:
     try:
-        plugin = json.loads((ROOT / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
+        plugin = json.loads((PLUGIN / ".claude-plugin/plugin.json").read_text(encoding="utf-8"))
         market = json.loads((ROOT / ".claude-plugin/marketplace.json").read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
         fail(f".claude-plugin: {error}")
@@ -137,9 +138,19 @@ def check_manifests() -> None:
         return
     if entries[0].get("version") != plugin.get("version"):
         fail(f"version mismatch: plugin.json {plugin.get('version')} vs marketplace.json {entries[0].get('version')}")
+    source = entries[0].get("source", "")
+    if not isinstance(source, str) or (ROOT / source).resolve() != PLUGIN.resolve():
+        fail(f"marketplace.json: source {source!r} does not point at plugins/whole-team")
     changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8") if (ROOT / "CHANGELOG.md").exists() else ""
     if f"## {plugin.get('version')}" not in changelog:
         fail(f"CHANGELOG.md: no '## {plugin.get('version')}' entry")
+
+
+def check_licenses() -> None:
+    root_license = (ROOT / "LICENSE").read_bytes()
+    for copy in (PLUGIN / "LICENSE", SKILLS / "whole-team" / "LICENSE"):
+        if not copy.is_file() or copy.read_bytes() != root_license:
+            fail(f"{copy.relative_to(ROOT)}: missing or different from the root LICENSE")
 
 
 def check_style(path: Path) -> None:
@@ -157,6 +168,7 @@ def main() -> int:
         check_style(path)
     check_commands_and_agents()
     check_manifests()
+    check_licenses()
     for message in errors:
         print(f"error  {message}")
     print(f"validate: {len(errors)} error(s) in {len(markdown)} markdown files")

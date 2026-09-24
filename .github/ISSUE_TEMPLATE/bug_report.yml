@@ -1,0 +1,44 @@
+name: Bug report
+description: The skill, a command or wt.py did something wrong
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you asked, what the agent or script did, and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: The prompt or command, and the relevant part of the project (for example the story from USER_STORIES.md). Remove anything private.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: whole-team version
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      options:
+        - Claude Code (plugin)
+        - Claude Code (skill only)
+        - Codex
+        - Cursor
+        - GitHub Copilot
+        - Gemini CLI
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model
+      placeholder: "e.g. Claude Sonnet 5"

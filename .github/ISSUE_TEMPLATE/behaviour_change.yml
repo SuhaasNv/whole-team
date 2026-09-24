@@ -1,0 +1,23 @@
+name: Behaviour change or new feature
+description: Propose a change to how the skill works
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What goes wrong or is missing today, in a real project. A transcript excerpt helps.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: The change you propose
+      description: Keep whole-team small; say why this belongs in the skill rather than in your project's CLAUDE.md.
+    validations:
+      required: true
+  - type: textarea
+    id: eval
+    attributes:
+      label: How we would test it
+      description: The eval case (prompt and what should pass) that fails today and would pass after the change.

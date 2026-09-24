@@ -9,14 +9,28 @@ Thanks for helping. whole-team is small on purpose; changes that keep it small a
 - **No tool-specific assumptions in the skill text.** Say "the platform's question tool" rather than naming one agent's tool, unless the text is inside a clearly marked Claude Code section.
 - **The script stays standard library only** and keeps its tests green.
 - **House style:** plain words, no em dashes, forward slashes in paths.
+- **Three copies of the license** (repository root, `plugins/whole-team/`, and the skill folder, so each installs self-contained) must stay identical; `tools/validate.py` checks it.
+- **A new slash command** also goes in the `/whole-team:help` table and the README.
+
+## Layout
+
+```
+.claude-plugin/marketplace.json     the marketplace (points at plugins/whole-team)
+plugins/whole-team/                 the plugin that gets installed
+  .claude-plugin/plugin.json
+  skills/whole-team/                the Agent Skill (SKILL.md, reference/, templates/, scripts/)
+  commands/                         slash commands
+  agents/                           the reviewer agent
+evals/  examples/  tools/           development only; not installed
+```
 
 ## Before opening a pull request
 
 ```bash
 python3 -m pip install pyyaml
 python3 tools/validate.py
-python3 -m unittest discover -s skills/whole-team/scripts
+python3 -m unittest discover -s plugins/whole-team/skills/whole-team/scripts
 claude plugin validate .        # if you have Claude Code
 ```
 
-Bump the version in both `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` and add a `CHANGELOG.md` entry when the change is user-visible.
+Bump the version in both `plugins/whole-team/.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` and add a `CHANGELOG.md` entry when the change is user-visible.

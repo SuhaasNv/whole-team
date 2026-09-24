@@ -25,4 +25,4 @@ jobs:
       - name: Validate skill, plugin and docs
         run: python tools/validate.py
       - name: Unit tests for wt.py
-        run: python -m unittest discover -s skills/whole-team/scripts -v
+        run: python -m unittest discover -s plugins/whole-team/skills/whole-team/scripts -v
