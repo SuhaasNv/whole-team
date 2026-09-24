@@ -166,6 +166,16 @@ More in [SECURITY.md](SECURITY.md).
 
 I ran this process by hand on [PermitFlow](https://github.com/SuhaasNv/permitflow), a licensing platform I built solo with an AI agent in one-day sprints. I cut scope on day one, mirrored every story to a Notion board, merged nothing without its Definition of Done, and froze `main` while reviewers looked at the release. The project shipped on time, so I packaged the process.
 
+## What's in this repo
+
+| Folder | What it holds |
+|--------|---------------|
+| [`plugins/whole-team/`](plugins/whole-team) | The plugin you install: the skill (`skills/whole-team`), 14 slash commands and the reviewer agent |
+| [`evals/`](evals) | The `claude plugin eval` suite: 15 scenarios, their graders and results |
+| [`examples/`](examples) | A brief scoped from start to finish |
+| [`assets/`](assets) | README images and their HTML sources |
+| [`tools/`](tools) | Dev scripts: validator, eval generator, image renderer |
+
 ## Contributing
 
 PRs welcome. The ones that make it smaller get merged first. See [CONTRIBUTING.md](CONTRIBUTING.md); behaviour changes come with an eval.

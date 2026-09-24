@@ -28,6 +28,8 @@ LABELS = {
     "retro": "Retro with owned actions",
     "sprint-close-slip": "Unfinished story slips honestly",
     "no-trigger-small-edit": "Stays out of small edits",
+    "ask-before-build": "Asks before building a story",
+    "explain-decision": "Explains a decision before acting",
 }
 
 
