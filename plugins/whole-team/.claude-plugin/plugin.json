@@ -1,7 +1,7 @@
 {
   "name": "whole-team",
   "displayName": "whole-team",
-  "description": "One developer, every hat. Agile delivery for solo developers and their AI agent: scoping and pushback, stories and Definition of Done, board sync (GitHub Projects, Linear, Jira, Notion or local), a story loop with tests, docs and independent review, sprint close and release gates.",
+  "description": "Claude Skill for controlled, agile development: one developer, every hat. Scoping and pushback, use cases and stories, sprints with reviews and retrospectives, board sync (GitHub Projects, Linear, Jira, Notion or local), a story loop with tests, docs and independent review, and release gates.",
   "version": "0.1.0",
   "author": {
     "name": "Suhaas Nv",
@@ -10,5 +10,20 @@
   "homepage": "https://github.com/SuhaasNv/whole-team",
   "repository": "https://github.com/SuhaasNv/whole-team",
   "license": "MIT",
-  "keywords": ["agile", "scrum", "sdlc", "user-stories", "definition-of-done", "scoping", "sprint", "project-management", "skills"]
+  "keywords": [
+    "claude-skill",
+    "claude-skills",
+    "claude-code",
+    "agent-skills",
+    "agile",
+    "scrum",
+    "sprint",
+    "retrospective",
+    "user-stories",
+    "use-cases",
+    "definition-of-done",
+    "scoping",
+    "sdlc",
+    "project-management"
+  ]
 }

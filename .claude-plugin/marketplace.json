@@ -11,13 +11,20 @@
     {
       "name": "whole-team",
       "source": "./plugins/whole-team",
-      "description": "One developer, every hat. Scope and push back, plan stories, deliver with tests, docs and review, close sprints, release.",
+      "description": "Claude Skill: one developer, every hat. Scope and push back, plan use cases and stories, run sprints with reviews and retros, deliver with tests, docs and review, release with gates.",
       "version": "0.1.0",
       "author": {
         "name": "Suhaas Nv"
       },
       "license": "MIT",
-      "keywords": ["agile", "sdlc", "user-stories", "scoping"],
+      "keywords": [
+        "claude-skill",
+        "agile",
+        "scrum",
+        "sdlc",
+        "user-stories",
+        "scoping"
+      ],
       "category": "development"
     }
   ]

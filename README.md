@@ -4,6 +4,7 @@
 
 [![validate](https://github.com/SuhaasNv/whole-team/actions/workflows/validate.yml/badge.svg)](https://github.com/SuhaasNv/whole-team/actions/workflows/validate.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+![Claude Skill](https://img.shields.io/badge/Claude-Skill-D97757)
 ![Claude Code plugin](https://img.shields.io/badge/Claude%20Code-plugin-D97757)
 ![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-4B5563)
 
@@ -18,7 +19,7 @@
 
 AI agents write code fast. What they skip is everything a good team does around the code: agreeing the scope before building, saying "that will not fit in three days", refusing to put Kubernetes under a two-user app, writing the test before calling it done, keeping the board honest, holding a retro, and asking before pushing.
 
-**whole-team** puts that team into your agent. You stay the product owner and make the calls; the agent plays scrum master, architect, developer, QA, security, DevOps, technical writer and reviewer, and it holds the gates.
+**whole-team** is a **Claude Skill** and **Claude Code plugin** (also a standard Agent Skill for Codex, Cursor, Copilot and Gemini CLI) that puts that team into your agent. You stay the product owner and make the calls; the agent plays scrum master, architect, developer, QA, security, DevOps, technical writer and reviewer, and it holds the gates.
 
 ## Contents
 
