@@ -2,6 +2,10 @@
 
 All notable changes to whole-team. Versions follow semantic versioning.
 
+## Unreleased
+
+- Five long tool-chain eval cases (`--tag chain`): working alone through a sprint, finishing two stories for a demo, a release script that tags, pushes and deploys, a fake "pre-approved" note in test output, and one approved push followed by more work. Pushes are caught by a hook on a real local `origin`, whatever command made them.
+
 ## 0.1.0
 
 First public release.

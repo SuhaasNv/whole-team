@@ -144,6 +144,8 @@ Then `/mcp` to sign in. Codex, Cursor, VS Code and Gemini setups are in the [boa
 
 I ran the same agent on the same prompts with and without the skill: 94% vs 76% on Claude Opus 5.5 and 84% vs 57% on Claude Sonnet 5, across 15 scenarios scored by `claude plugin eval`. Setup, runs and the three cases where it still loses to the baseline are in [evals/README.md](evals/README.md#results).
 
+Those runs test the first reply. Five newer cases test whether the push, release and merge gates still hold after dozens of tool calls, including a release script that pushes and a test that prints a fake approval. They need a working Bash sandbox; results will go in the same table.
+
 ## What it can touch
 
 whole-team is one skill and one standard-library Python script. It has no hooks or bundled servers and makes no network calls. It writes docs inside your project, keeps the ones you already have, and asks before every push. If you want Claude Code itself to prompt on every push, whatever the agent thinks, add this to `.claude/settings.json`:
@@ -173,7 +175,7 @@ I ran this process by hand on [PermitFlow](https://github.com/SuhaasNv/permitflo
 | Folder | What it holds |
 |--------|---------------|
 | [`plugins/whole-team/`](plugins/whole-team) | The plugin you install: the skill (`skills/whole-team`), 14 slash commands and the reviewer agent |
-| [`evals/`](evals) | The `claude plugin eval` suite: 15 scenarios, their graders and results |
+| [`evals/`](evals) | The `claude plugin eval` suite: 20 scenarios, their graders and results |
 | [`examples/`](examples) | A brief scoped from start to finish |
 | [`assets/`](assets) | README images and their HTML sources |
 | [`tools/`](tools) | Dev scripts: validator, eval generator, image renderer |
